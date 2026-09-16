@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | JL Mini Mercado - Calidad que se recuerda</title>
+    
+    <!-- Fuentes unificadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/nosotros.css">
+</head>
+<body>
+
+    <!-- Header Unificado -->
+    <header id="main-header">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.svg" alt="JL Mini Mercado - Calidad que se recuerda" height="48" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado". Preservación de color vía clases CSS existentes:
+                     "JL" hereda el color que tenía "MB" (.logo-text { color: #000000 })
+                     "Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--8b8b8d) })
+                     No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
+                <span class="logo-text">JL<span>  Mini Mercado</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
+                <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
+                <li><a href="nosotros.html" class="active" onclick="closeMenu()">Nosotros</a></li>
+                <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-nosotros fade-in-up">
+        <div class="hero-content">
+            <h1>Más que una tienda,<br>una promesa de calidad</h1>
+            <p>Conoce la esencia, los valores y el equipo humano detrás de cada producto que llega a tus manos desde JL Mini Mercado Premium en Pinar del Río.</p>
+            <span class="tagline">"El Precio se olvida, la Calidad se recuerda"</span>
+        </div>
+    </div>
+
+    <!-- Nuestra Historia -->
+    <section>
+        <div class="historia-grid">
+            <div class="img-frame fade-in-up">
+                <img src="images/backgrounds/mercado_7.webp" alt="Historia JL Mini Mercado">
+            </div>
+            <div class="historia-text fade-in-up">
+                <h2>Nuestra Historia</h2>
+                <p>JL Mini Mercado nació con una convicción simple pero poderosa: los pinareños merecen acceder a productos de calidad mundial sin salir de su ciudad. Desde nuestros primeros pasos en la Calle Martí No. 124, hemos evolucionado de un pequeño local a un referente comercial diversificado.</p>
+                <p>No solo vendemos productos; tambíen curamos experiencias. Cada división, desde nuestra variedad de alimentos hasta el aseo personal y del hogar y la prefumería, han sido construida sobre la base de la confianza y el servicio personalizado.</p>
+                <div class="highlight-box">
+                    "Crecimos escuchando a nuestra comunidad, adaptándonos a sus sueños y necesidades."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section>
+        <div class="section-header fade-in-up">
+            <h2>Nuestra <span>Esencia</span></h2>
+            <p>Los pilares que sostienen cada decisión que tomamos.</p>
+        </div>
+        <div class="mv-container">
+            <div class="mv-card fade-in-up">
+                <h3>Misión</h3>
+                <p>Ser el aliado confiable del hogar y la familia pinareña, ofreciendo una selección premium de productos que combinan calidad, buen gusto y excelentes precios. Nos dedicamos a transformar la compra en un acto de satisfacción y tranquilidad.</p>
+            </div>
+            <div class="mv-card fade-in-up">
+                <h3>Visión</h3>
+                <p>Aspiramos a ser el Mercado más querido y confiable de Pinar del Río, reconocido no solo por lo que vendemos, sino por cómo hacemos sentir a nuestros clientes. Queremos expandir nuestra presencia manteniendo la calidez de un negocio familiar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section>
+        <div class="section-header fade-in-up">
+            <h2>¿Qué <span>Queremos Lograr?</span></h2>
+        </div>
+        <div class="objetivos-grid">
+            <div class="obj-item fade-in-up">
+                <div class="obj-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+                </div>
+                <h3>Excelencia Absoluta</h3>
+                <p>Garantizar que cada producto de nuestro catálogo supere las expectativas de calidad.</p>
+            </div>
+            <div class="obj-item fade-in-up">
+                <div class="obj-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h3>Fidelización Real</h3>
+                <p>Crear vínculos duraderos donde el cliente se sienta parte de nuestra familia.</p>
+            </div>
+            <div class="obj-item fade-in-up">
+                <div class="obj-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+                </div>
+                <h3>Innovación Constante</h3>
+                <p>Traer las últimas tendencias en presencia y calidad de prodcutos a nuestro mercado local antes que nadie.</p>
+            </div>
+            <div class="obj-item fade-in-up">
+                <div class="obj-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <h3>Impacto Local</h3>
+                <p>Contribuir al desarrollo económico y social de nuestra hermosa provincia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Grande: Equipo y Locales -->
+    <div class="gallery-section">
+        <!-- Banner Principal: Fachada/Local -->
+        <div class="gallery-banner fade-in-up">
+            <img src="images/backgrounds/mercado_2.webp" alt="Nuestros Locales">
+            <div class="banner-caption">
+                <h3>Nuestro Espacio</h3>
+                <p>Diseñados para tu comodidad, donde cada rincón invita a descubrir productos excepcionales.</p>
+            </div>
+        </div>
+
+        <!-- Sub-galería: Equipo y Detalles -->
+        <div class="sub-gallery">
+            <div class="sub-img fade-in-up">
+                <img src="images/backgrounds/mercado_8.webp" alt="Equipo JL Mini Mercado">
+            </div>
+            <div class="sub-img fade-in-up">
+                <img src="images/backgrounds/mercado_3.webp" alt="Atención al Cliente">
+            </div>
+            <div class="sub-img fade-in-up">
+                <img src="images/backgrounds/mercado_9.webp" alt="Detalles de Calidad">
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section>
+        <div class="cta-box fade-in-up">
+            <h2 style="font-family: var(--font-title); font-size: 2rem; margin-bottom: 1rem;">Ven a conocernos</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">La mejor forma de entender nuestra pasión es visitándonos. Te esperamos con los brazos abiertos.</p>
+            <a href="contacto.html" class="btn-primary">Visite nuestra tienda física</a>
+        </div>
+    </section>
+
+    <!-- Footer Unificado -->
+    <footer>
+        <div class="footer-logo fade-in-up">
+            <img src="images/logos/logo.svg" alt="JL Mini Mercado" height="56" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
+                 "JL" hereda el color que tenía "MB" (.footer-logo-text { color: #000000 })
+                 "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--8b8b8d) }) -->
+            <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
+        </div>
+        <p style="color: #4a4a4a; font-style: italic; font-size: 1.2rem;">"El Precio se olvida, la Calidad se recuerda"</p>
+        <div class="footer-copy fade-in-up">
+            © 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.
+        </div>
+    </footer>
+
+    <!-- Scripts para efectos -->
+    <script src="js/nosotros.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JL Mini Mercado Pinar del Río. El Precio se olvida, la Calidad se recuerda. Catálogo de Ventas."
+    />
+    <title>JL Mini Mercado | Calidad que se recuerda en Pinar del Río</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <img
+            src="images/logos/logo.svg"
+            alt="JL Mini Mercado - Calidad que se recuerda"
+            height="48"
+            onerror="this.style.display = 'none'"
+          />
+          <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado". Preservación de color vía clases CSS existentes:
+               "JL" hereda el color que tenía "MB" (.logo-text { color: var(--primary) })
+               "Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--accent) })
+               No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
+          <span class="logo-text">JL<span>  Mini Mercado</span></span>
+        </a>
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+            <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
+            <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
+            <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero fade-in">
+      <div class="container">
+        <h1>
+          "El Precio se olvida, <br /><strong>la Calidad se recuerda</strong>"
+        </h1>
+        <p>
+          Tu destino de confianza en Pinar del Río. Descubre nuestra selección
+          premium de productos para la cocina, el hogar y tu estilo de vida.
+        </p>
+        <a href="contacto.html"class="btn btn-primary">Visítanos en nuestra Tienda</a>
+      </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR -->
+    <section class="value-prop fade-in">
+      <div class="container">
+        <p class="value-eyebrow"><strong>¿Por qué elegimos?</strong></p>
+        <h2 class="section-title">Compromiso con Nuestros Clientes</h2>
+        <div class="value-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"
+                />
+              </svg>
+            </div>
+            <h3>Calidad e Innovación</h3>
+            <p>
+              Ofrecemos productos de alta calidad que combinan el buen gusto,
+              la calidad y todo con un excelente servicio. Nuestro Mini Mercado JL
+              trabaja para satisfacer tus necesidades con soluciones confiables,
+              precios competitivos y atención personalizada. Descubre la
+              diferencia de comprar con nosotros.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 3L18 3L22 9L12 21L2 9Z" />
+              </svg>
+            </div>
+            <h3>El Mercado Líder de Pinar del Río</h3>
+            <p>
+             No somos el mayor, pero si somos el mejor Mercado para la familia pinareña
+              para compras de Alimentos, Aseo Personal y del Hogar, Perfumería y muchísimo más.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials fade-in">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center">
+          Lo Que Dicen Nuestros Clientes
+        </h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "Encontré todo lo que buscaba para hacer una sabrosa cena a mi hija embarazada. 
+               Escribí por WhatsApp, me confirmaron la
+              disponibilidad al momento y no perdí tiempo en el viaje hasta
+              la tienda."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/banners/testimonios/rubia.webp" alt="Yaneth Gil Real" />
+              </div>
+              <div>
+                <div class="testimonial-name">Yaneth Gil Real</div>
+                <div class="testimonial-role">Cliente de satifecha con nuestros productos cogelados</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "Compré unos licores y confituras y el precio realmente valió la
+              pena frente a lo que había visto en otros lugares. La calidad
+              es la que prometen: se nota que seleccionan muy bien lo que
+              venden."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/banners/testimonios/hombre.webp" alt="Dr. Reynaldo Ramos" />
+              </div>
+              <div>
+                <div class="testimonial-name">Dr. Reynaldo Ramos</div>
+                <div class="testimonial-role">Cliente complacido con nuestros precios.</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
+            </div>
+            <p class="testimonial-text">
+              "Es mi tienda de confianza para la perfumería y el aseo personal
+             y del hogar. La atención es siempre amable y personalizada, y
+              siempre queda claro qué hay disponible antes de ir, solo basta con preguntar por WhatsApp."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/banners/testimonios/cuca.webp" alt="Odonaimys Cruz Cam" />
+              </div>
+              <div>
+                <div class="testimonial-name">Odonaimys Cruz Cam</div>
+                <div class="testimonial-role">Cliente de Perfumería</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO (Teaser) -->
+    <section id="categorias" class="categories fade-in">
+      <div class="container" style="text-align: center">
+        <h2 class="section-title">Nuestras Divisiones Comerciales</h2>
+        <p
+          style="
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+          "
+        >
+          Aseo Personal y del Hogar, Aliementos Variados
+          y Perfumería: todo lo que necesitas en un solo lugar.
+        </p>
+        <a href="catalogo.html" class="btn btn-primary"
+          >Ver Catálogo Completo</a
+        >
+      </div>
+    </section>
+
+    <!-- NOSOTROS (Teaser) -->
+    <section id="nosotros" class="about fade-in">
+      <div class="container" style="text-align: center">
+        <h2 class="section-title">
+          Más que una tienda, una promesa de calidad
+        </h2>
+        <p
+          style="
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+          "
+        >
+          Conoce la esencia, los valores y el equipo humano detrás de cada
+          producto que llega a tus manos en Mini Mercado JL.
+        </p>
+        <a href="nosotros.html" class="btn btn-primary"
+          >Conoce Nuestra Historia</a
+        >
+      </div>
+    </section>
+
+    <!-- CONTACTO (Teaser) -->
+    <section id="contacto" class="contact fade-in">
+      <div class="container" style="text-align: center">
+        <h2 class="section-title">Visítanos o Contáctanos</h2>
+        <p
+          style="
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+          "
+        >
+          Calle Martí No. 124, Ciudad Pinar del Río. Escríbenos por
+          WhatsApp o consulta todos nuestros datos de contacto.
+        </p>
+        <a href="contacto.html" class="btn btn-primary"
+          >Ver Datos de Contacto</a
+        >
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-logo">
+          <img
+            src="images/logos/logo_invertido.svg"
+            alt="JL Mini Mercado"
+            height="42"
+            style="display: inline-block; vertical-align: middle"
+            onerror="this.style.display = 'none'"
+          />
+          <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
+               "JL" hereda el color que tenía "MB" (.footer-logo-text { color: var(--white) })
+               "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--accent) }) -->
+          <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
+        </div>
+        <p class="footer-slogan">
+          "El Precio se olvida, la Calidad se recuerda"
+        </p>
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <p class="copyright">
+          &copy; 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights
+          reserved. Pinar del Río, Cuba.
+        </p>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT (Minimalista y optimizado) -->
+    <script src="js/main.js"></script>
+</body>
+</html>

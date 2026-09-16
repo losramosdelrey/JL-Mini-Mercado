@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacta con JL Mini Mercado en Pinar del Río: dirección, teléfonos, correo y WhatsApp. Visítanos o escríbenos.">
+    <title>Contacto | JL Mini Mercado en Pinar del Río</title>
+    <link rel="stylesheet" href="css/contacto.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.svg" alt="JL Mini Mercado - Calidad que se recuerda" height="48" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado". Preservación de color vía clases CSS existentes:
+                     "JL" hereda el color que tenía "MB" (.logo-text { color: var(--primary) })
+                     "JL Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--accent) })
+                     No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
+                <span class="logo-text">JL<span>  Mini Mercado</span></span>
+            </a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
+                    <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
+                    <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
+                    <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE BANNER -->
+    <section class="hero fade-in" style="padding: 50px 0;">
+        <div class="container">
+            <h1 style="font-size: 2.2rem;">Contáctanos</h1>
+            <p>Estamos para servirte. Escríbenos, llámanos o visítanos en nuestro Mini Mercado.</p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact fade-in">
+        <div class="container">
+            <h2 class="section-title">Visítanos o Contáctanos</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Estamos para servirte</h3>
+                    
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <p style="font-weight: 600; color: var(--primary);">Dirección Física</p>
+                            <p>Calle Martí No. 124,<br>Ciudad Pinar del Río, Cuba.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div>
+                            <p style="font-weight: 600; color: var(--primary);">Teléfonos Móviles</p>
+                            <p><a href="tel:+53 51870743">+53 747044</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <div>
+                            <p style="font-weight: 600; color: var(--primary);">Correos Electrónicos</p>
+                            <p><a href="mailto:jlminimercado@mercado.com">jlminimercado@mercado.com</a></p>
+                            <p><a href="mailto:losramosdelrey@yahoo.es">losramosdelrey@yahoo.es</a></p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <a href="https://wa.me/5356729186?text=Hola%20Rey,%20visité%20la%20web%20de%20JL Mini Mercado%20y%20quiero%20hacer%20una%20consulta." class="btn btn-whatsapp" target="_blank" style="width: 100%; justify-content: center;">
+                            Chatear ahora por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <!-- Representación visual ligera del mapa para ahorrar datos, con enlace real a Google Maps -->
+                    <div class="map-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="#1A365D" style="margin-bottom: 15px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <h3 style="margin-bottom: 10px;">Calle Martí No. 124</h3>
+                        <p style="margin-bottom: 15px; color: var(--text-light);">Pinar del Río, Cuba</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=22.424279,-83.697250" target="_blank" class="map-btn">Abrir en Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/logos/logo_svg.png" alt="Jl MiniMercado" height="48" style="display: inline-block; vertical-align: middle;" onerror="this.style.display='none'">
+                <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
+                     "JL" hereda el color que tenía "MB" (.footer-logo-text { color: var(--white) })
+                     "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--accent) }) -->
+                <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
+            </div>
+            <p class="footer-slogan">"El Precio se olvida, la Calidad se recuerda"</p>
+            <div class="footer-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <p class="copyright">&copy; 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT (Minimalista y optimizado) -->
+    <script src="js/contacto.js"></script>
+</body>
+</html>
