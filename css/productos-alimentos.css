@@ -402,6 +402,22 @@
                 left: 0;
             }
 
+            /* Logo ajustado en móvil (ni muy grande ni muy pequeño) */
+            .logo {
+                gap: 8px;
+                max-width: calc(100% - 48px);
+                font-size: 1.45rem;
+            }
+            .logo img {
+                height: 40px;
+            }
+            .logo .logo-jl {
+                font-size: 1.12em;
+            }
+            .logo .logo-rest {
+                font-size: 1em;
+            }
+
             .category-hero h1 {
                 font-size: 1.7rem;
             }
