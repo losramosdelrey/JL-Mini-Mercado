@@ -69,13 +69,25 @@
         }
 
         .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #1A365D;
+            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+            font-size: 1.85rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.12em;
+            color: #000000;
         }
-
-        .logo-text span { color: var(--accent-gold); }
+        .logo-text .logo-jl {
+            font-size: 1.15em; font-weight: 700;
+            color: #000000;
+        }
+        .logo-text .logo-rest {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #8b8b8d;
+            text-transform: lowercase;
+        }
 
         .nav-links { display: flex; gap: 2rem; }
         
@@ -471,13 +483,25 @@
         }
 
         .footer-logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+            font-size: 1.85rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.12em;
             color: #000000;
         }
-        
-        .footer-logo-text span { color: var(--accent-gold); }
+        .footer-logo-text .footer-logo-jl {
+            font-size: 1.15em; font-weight: 700;
+            color: #000000;
+        }
+        .footer-logo-text .footer-logo-rest {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #8b8b8d;
+            text-transform: lowercase;
+        }
 
         .footer-copy {
             color: #4a4a4a;

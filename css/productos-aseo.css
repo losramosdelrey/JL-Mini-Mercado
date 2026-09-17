@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 /* =========================================
            VARIABLES Y RESET (idénticas a index.html
            para mantener la misma identidad visual)
@@ -97,11 +98,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+            font-size: 1.75rem;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
         }
 
         .logo img {
@@ -109,8 +111,15 @@
             vertical-align: middle;
         }
 
-        .logo span {
-            color: var(--cat-aseo);
+        .logo .logo-jl {
+            font-size: 1.15em; font-weight: 700;
+            color: var(--primary);
+        }
+        .logo .logo-rest {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #8b8b8d;
+            text-transform: lowercase;
         }
 
         .footer-logo {
@@ -127,15 +136,27 @@
         }
 
         .footer-logo-text {
-            font-size: 1.4rem;
-            font-weight: 800;
+            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+            font-size: 1.85rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.12em;
             color: var(--white);
-            letter-spacing: -0.5px;
+        }
+        .footer-logo-text .footer-logo-jl {
+            font-size: 1.15em; font-weight: 700;
+            color: var(--white);
+        }
+        .footer-logo-text .footer-logo-rest {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: var(--cat-aseo);
+            text-transform: lowercase;
         }
 
-        .footer-logo-text span {
-            color: var(--cat-aseo);
-        }
+        
 
         .nav-menu {
             display: flex;

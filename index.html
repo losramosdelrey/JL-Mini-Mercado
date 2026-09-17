@@ -9,6 +9,9 @@
     />
     <title>JL Mini Mercado | Calidad que se recuerda en Pinar del Río</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
   <body>
     <!-- HEADER -->
@@ -25,7 +28,7 @@
                "JL" hereda el color que tenía "MB" (.logo-text { color: var(--primary) })
                "Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--accent) })
                No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
-          <span class="logo-text">JL<span>  Mini Mercado</span></span>
+          <span class="logo-text"><span class="logo-jl">JL</span><span class="logo-rest"> mini mercado</span></span>
         </a>
         <nav>
           <ul class="nav-menu" id="navMenu">
@@ -256,7 +259,7 @@
           <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
                "JL" hereda el color que tenía "MB" (.footer-logo-text { color: var(--white) })
                "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--accent) }) -->
-          <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
+          <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
         </div>
         <p class="footer-slogan">
           "El Precio se olvida, la Calidad se recuerda"

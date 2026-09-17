@@ -6,6 +6,9 @@
     <meta name="description" content="Contacta con JL Mini Mercado en Pinar del Río: dirección, teléfonos, correo y WhatsApp. Visítanos o escríbenos.">
     <title>Contacto | JL Mini Mercado en Pinar del Río</title>
     <link rel="stylesheet" href="css/contacto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,7 +21,7 @@
                      "JL" hereda el color que tenía "MB" (.logo-text { color: var(--primary) })
                      "JL Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--accent) })
                      No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
-                <span class="logo-text">JL<span>  Mini Mercado</span></span>
+                <span class="logo-text"><span class="logo-jl">JL</span><span class="logo-rest"> mini mercado</span></span>
             </a>
             <nav>
                 <ul class="nav-menu" id="navMenu">
@@ -64,7 +67,7 @@
                         <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         <div>
                             <p style="font-weight: 600; color: var(--primary);">Teléfonos Móviles</p>
-                            <p><a href="tel:+53 51870743">+53 51870743</a></p>
+                            <p><a href="tel:+5351870743">+53 51870743</a></p>
                         </div>
                     </div>
 
@@ -105,7 +108,7 @@
                 <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
                      "JL" hereda el color que tenía "MB" (.footer-logo-text { color: var(--white) })
                      "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--accent) }) -->
-                <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
+                <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
             </div>
             <p class="footer-slogan">"El Precio se olvida, la Calidad se recuerda"</p>
             <div class="footer-links">

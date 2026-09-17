@@ -1,3 +1,6 @@
+/* Logo tipografía serif clásica */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+
 /* =========================================
            VARIABLES Y RESET (Optimizado para rendimiento)
            ========================================= */
@@ -176,15 +179,24 @@
       }
 
       .logo-text {
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: var(--primary);
-        letter-spacing: -0.5px;
+        font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+        font-size: 1.85rem;
+        letter-spacing: 0.01em;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.12em;
+        color: var(--primary);
       }
-
-      .logo-text span {
+      .logo-text .logo-jl {
+        font-size: 1.15em; font-weight: 700;
+        color: var(--primary);
+      }
+      .logo-text .logo-rest {
+        font-weight: 700;
+        font-size: 1.05em;
         color: var(--accent);
+        text-transform: lowercase;
       }
 
       .nav-menu {
@@ -793,15 +805,24 @@
       }
 
       .footer-logo-text {
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: var(--white);
-        letter-spacing: -0.5px;
+        font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
+        font-size: 1.85rem;
+        letter-spacing: 0.01em;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.12em;
+        color: var(--white);
       }
-
-      .footer-logo-text span {
+      .footer-logo-text .footer-logo-jl {
+        font-size: 1.15em; font-weight: 700;
+        color: var(--white);
+      }
+      .footer-logo-text .footer-logo-rest {
+        font-weight: 700;
+        font-size: 1.05em;
         color: var(--accent);
+        text-transform: lowercase;
       }
 
       .footer-links {

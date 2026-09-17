@@ -8,11 +8,23 @@
     <!-- Fuentes unificadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/nosotros.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "EB Garamond", Garamond, "Baskerville", serif;
+        }
+
+        h1, h2, h3,
+        .hero-content,
+        .section-header,
+        .tagline,
+        .cta-box h2,
+        .footer-logo-text {
+            font-family: "Cormorant Garamond", Garamond, "Baskerville", serif;
+            letter-spacing: 0.02em;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +37,7 @@
                      "JL" hereda el color que tenía "MB" (.logo-text { color: #000000 })
                      "Mini Mercado" hereda el color que tenía "Company" (.logo-text span { color: var(--8b8b8d) })
                      No se tocó el CSS: como las reglas apuntan a la estructura/clase (no al texto), el color se conserva automáticamente al cambiar solo el contenido de los <span>. -->
-                <span class="logo-text"><span class="logo-jl">JL</span><span class="logo-rest"> mini mercado</span></span>
+                <span class="logo-text">JL<span>  Mini Mercado</span></span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
@@ -163,7 +175,7 @@
             <!-- CAMBIO: "MBCompany" -> "JL Mini Mercado" (logo del footer). Preservación de color vía clases CSS existentes:
                  "JL" hereda el color que tenía "MB" (.footer-logo-text { color: #000000 })
                  "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--8b8b8d) }) -->
-            <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
+            <span class="footer-logo-text">JL<span>  Mini Mercado</span></span>
         </div>
         <p style="color: #4a4a4a; font-style: italic; font-size: 1.2rem;">"El Precio se olvida, la Calidad se recuerda"</p>
         <div class="footer-copy fade-in-up">
