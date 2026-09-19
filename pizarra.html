@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pizarra Digital de Inventario - JL Mini Mercado. Disponibilidad y precios actualizados.">
+  <title>Pizarra Digital | JL Mini Mercado</title>
+  <link rel="stylesheet" href="css/catalogo.css">
+  <link rel="stylesheet" href="css/pizarra.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER (igual que tu sitio) -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logos/logo.svg" alt="JL Mini Mercado" height="48"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+        <span class="logo-text"><span class="logo-jl">JL</span><span class="logo-rest"> mini mercado</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
+          <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
+          <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
+          <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="hero fade-in" style="padding: 40px 0;">
+    <div class="container">
+      <h1 style="font-size: 2rem;">Pizarra <strong>Digital</strong></h1>
+      <p>Consulta disponibilidad y precios de todos nuestros productos.</p>
+    </div>
+  </section>
+
+  <!-- NAVEGACIÓN POR CATEGORÍAS -->
+  <div class="pizarra-nav">
+    <div class="container">
+      <div class="pizarra-nav-inner" id="pizarraNav">
+        <!-- Botones generados por JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO DE LA PIZARRA -->
+  <section class="pizarra-main">
+    <div class="container" id="pizarraContent">
+      <p style="text-align:center;padding:40px;color:var(--text-light)">Cargando pizarra...</p>
+    </div>
+  </section>
+
+  <!-- FOOTER (igual que tu sitio) -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="images/logos/logo_invertido.svg" alt="JL Mini Mercado" height="48"
+             style="display:inline-block;vertical-align:middle"
+             onerror="this.style.display='none'">
+        <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
+      </div>
+      <p class="footer-slogan">"El Precio se olvida, la Calidad se recuerda"</p>
+      <div class="footer-links">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="pizarra.html">Pizarra</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <p class="copyright">&copy; 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.</p>
+    </div>
+  </footer>
+
+  <script src="js/catalogo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pizarra.js"></script>
+</body>
+</html>
