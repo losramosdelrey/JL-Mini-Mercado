@@ -100,11 +100,13 @@
         prods.forEach((p) => {
           const cls = p.disponible ? "ok" : "no";
           const txt = p.disponible ? "EXISTE EN TIENDA" : "NO EXISTE EN TIENDA";
+          // Si el producto no está disponible, el precio se muestra siempre como 0,00
+          const precioTxt = p.disponible ? formatPrice(p.precio) : "0,00";
           html += `
             <tr>
               <td class="product-name">${escapeHtml(p.nombre)}</td>
               <td><span class="status ${cls}"><span class="status-dot"></span>${txt}</span></td>
-              <td class="price">${formatPrice(p.precio)}<small>CUP</small></td>
+              <td class="price">${precioTxt}<small>CUP</small></td>
             </tr>
           `;
         });
