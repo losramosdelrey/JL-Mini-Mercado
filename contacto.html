@@ -21,13 +21,24 @@
             </a>
             <nav role="navigation" aria-label="Menú principal">
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
-                    <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
-                    <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
-                    <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+                    <li><a href="index.html#inicio" onclick="closeMenu()" data-i18n="nav.home">Inicio</a></li>
+                    <li><a href="catalogo.html" onclick="closeMenu()" data-i18n="nav.catalog">Catálogo</a></li>
+                    <li><a href="nosotros.html" onclick="closeMenu()" data-i18n="nav.about">Nosotros</a></li>
+                    <li><a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
             </nav>
-            <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+            
+        
+                <div class="lang-switcher" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn active" data-lang="es" title="Español" aria-label="Español" aria-pressed="true">
+            <svg class="flag-svg" viewBox="0 0 21 15" width="22" height="16" aria-hidden="true"><rect width="21" height="15" fill="#c60b1e"/><rect y="3.75" width="21" height="7.5" fill="#ffc400"/></svg>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English" aria-pressed="false">
+            <svg class="flag-svg" viewBox="0 0 60 30" width="22" height="16" aria-hidden="true"><rect width="60" height="30" fill="#00247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#cf142b" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/></svg>
+          </button>
+        </div>
+
+<button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,23 +49,23 @@
     <!-- PAGE BANNER -->
     <section class="hero fade-in" style="padding: 50px 0;">
         <div class="container">
-            <h1 style="font-size: 2.2rem;">Contáctanos</h1>
-            <p>Estamos para servirte. Escríbenos, llámanos o visítanos en nuestro Mini Mercado.</p>
+            <h1 style="font-size: 2.2rem;" data-i18n="contact.title">Contáctanos</h1>
+            <p data-i18n="contact.subtitle">Estamos para servirte. Escríbenos, llámanos o visítanos en nuestro Mini Mercado.</p>
         </div>
     </section>
 
     <!-- CONTACTO -->
     <section id="contacto" class="contact fade-in">
         <div class="container">
-            <h2 class="section-title">Visítanos o Contáctanos</h2>
+            <h2 class="section-title" data-i18n="contact.section">Visítanos o Contáctanos</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Estamos para servirte</h3>
+                    <h3 data-i18n="contact.serve">Estamos para servirte</h3>
                     
                     <div class="contact-item">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                         <div>
-                            <p style="font-weight: 600; color: var(--primary);">Dirección Física</p>
+                            <p style="font-weight: 600; color: var(--primary);" data-i18n="contact.address">Dirección Física</p>
                             <p>Calle Martí No. 124,<br>Ciudad Pinar del Río, Cuba.</p>
                         </div>
                     </div>
@@ -62,15 +73,15 @@
                     <div class="contact-item">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                         <div>
-                            <p style="font-weight: 600; color: var(--primary);">Horario de Atención</p>
-                            <p>Todos los días,<br>de 9:00 a. m. a 9:00 p. m.</p>
+                            <p style="font-weight: 600; color: var(--primary);" data-i18n="contact.hours">Horario de Atención</p>
+                            <p><span data-i18n="contact.hours.value" data-i18n-html>Todos los días,<br>de 9:00 a. m. a 9:00 p. m.</span></p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         <div>
-                            <p style="font-weight: 600; color: var(--primary);">Teléfonos Móviles</p>
+                            <p style="font-weight: 600; color: var(--primary);" data-i18n="contact.phones">Teléfonos Móviles</p>
                             <p><a href="tel:+5351870743">+53 51870743</a></p>
                         </div>
                     </div>
@@ -78,7 +89,7 @@
                     <div class="contact-item">
                         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         <div>
-                            <p style="font-weight: 600; color: var(--primary);">Correos Electrónicos</p>
+                            <p style="font-weight: 600; color: var(--primary);" data-i18n="contact.emails">Correos Electrónicos</p>
                             <p><a href="mailto:jlminimercado@mercado.com">jlminimercado@mercado.com</a></p>
                             <p><a href="mailto:losramosdelrey@yahoo.es">losramosdelrey@yahoo.es</a></p>
                         </div>
@@ -87,7 +98,7 @@
                     <div style="margin-top: 30px;">
                         <a href="https://wa.me/5351870743?text=Hola%20JL%20Mini%20Mercado%2C%20visité%20su%20web%20y%20quiero%20consultar%20disponibilidad%20de%20productos." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="width: 100%; justify-content: center;" aria-label="Abrir chat de WhatsApp con JL Mini Mercado">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.59 2 2.17 6.42 2.17 11.87c0 1.75.46 3.45 1.33 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.45 0 9.87-4.42 9.87-9.87S17.49 2 12.04 2zm5.23 13.94c-.22.62-1.28 1.19-1.77 1.27-.47.08-.91.11-2.77-.67-2.34-.98-3.84-3.36-3.96-3.52-.12-.16-.96-1.28-.96-2.44s.61-1.73.82-1.97c.22-.24.47-.3.62-.3.16 0 .31 0 .45.01.15.01.35-.06.55.42.2.48.68 1.66.74 1.78.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.48.14.23.62 1.02 1.33 1.65.91.81 1.68 1.06 1.92 1.18.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2z"/></svg>
-                            Escríbenos por WhatsApp — Respondemos al momento
+                            <span data-i18n="contact.wa.cta">Escríbenos por WhatsApp — Respondemos al momento</span>
                         </a>
                     </div>
                 </div>
@@ -106,7 +117,7 @@
                     <div class="map-overlay">
                         <a href="https://maps.app.goo.gl/akMQ9vmm73Hgw9Wm8" target="_blank" rel="noopener noreferrer" class="map-btn">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Abrir en Google Maps
+                            <span data-i18n="contact.map">Abrir en Google Maps</span>
                         </a>
                     </div>
                 </div>
@@ -124,7 +135,7 @@
                      "Mini Mercado" hereda el color que tenía "Company" (.footer-logo-text span { color: var(--accent) }) -->
                 <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
             </div>
-            <p class="footer-slogan">"El Precio se olvida, la Calidad se recuerda"</p>
+            <p class="footer-slogan" data-i18n="footer.slogan">"El Precio se olvida, la Calidad se recuerda"</p>
             <div class="footer-links">
                 <a href="index.html#inicio">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
@@ -136,6 +147,7 @@
     </footer>
 
     <!-- JAVASCRIPT (Minimalista y optimizado) -->
+    <script src="js/i18n.js"></script>
     <script src="js/contacto.js"></script>
 </body>
 </html>

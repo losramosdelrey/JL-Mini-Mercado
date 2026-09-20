@@ -12,6 +12,11 @@
     return Number(n).toLocaleString("es-CU");
   }
 
+  // Un producto se publica solo si disponible es true (también acepta "true" como texto)
+  function isAvailable(p) {
+    return String(p.disponible).toLowerCase() === "true";
+  }
+
   function escapeHtml(str) {
     const d = document.createElement("div");
     d.textContent = str;
@@ -51,18 +56,13 @@
       return;
     }
 
-    let total = 0, avail = 0;
+    let avail = 0;
     Object.values(cat.subcategorias).forEach((sub) => {
-      sub.productos.forEach((p) => {
-        total++;
-        if (p.disponible) avail++;
+      (sub.productos || []).forEach((p) => {
+        if (isAvailable(p)) avail++;
       });
     });
 
-    const tFn = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t : function (k) {
-      const fallback = { "board.available": "Si Hay", "board.unavailable": "Hoy no tenemos", "board.available.word": "Si hay", "board.unavailable.word": "Hoy no tenemos" };
-      return fallback[k] || k;
-    };
     let html = `
       <div class="pizarra-header">
         <h2 class="pizarra-title">
@@ -70,22 +70,22 @@
           ${cat.nombre}
         </h2>
         <div class="pizarra-legend">
-          <span class="legend-ok">● ${tFn("board.available")} (${avail})</span>
-          <span class="legend-no">● ${tFn("board.unavailable")} (${total - avail})</span>
+          <span class="legend-ok">● Existe (${avail})</span>
         </div>
       </div>
     `;
 
     Object.keys(cat.subcategorias).forEach((subKey) => {
       const sub = cat.subcategorias[subKey];
-      const prods = sub.productos || [];
-      const availSub = prods.filter((p) => p.disponible).length;
+      // Solo se publican los productos con disponible: true
+      const prods = (sub.productos || []).filter(isAvailable);
+      if (prods.length === 0) return; // subcategoría sin productos: no se muestra
 
       html += `
         <div class="subcat-block">
           <div class="subcat-title">
             ${sub.nombre}
-            <span class="count">${availSub}/${prods.length} disponibles</span>
+            <span class="count">${prods.length} ${prods.length === 1 ? "producto" : "productos"}</span>
           </div>
           <table class="product-table">
             <thead>
@@ -98,44 +98,32 @@
             <tbody>
       `;
 
-      if (prods.length === 0) {
-        html += `<tr><td colspan="3" style="text-align:center;color:var(--text-light);padding:20px">Sin productos</td></tr>`;
-      } else {
-        prods.forEach((p) => {
-          const cls = p.disponible ? "ok" : "no";
-          const txt = p.disponible ? tFn("board.available.word") : tFn("board.unavailable.word");
-          // Si el producto no está disponible, el precio se muestra siempre como 0,00
-          const precioTxt = p.disponible ? formatPrice(p.precio) : "0,00";
-          html += `
-            <tr>
-              <td class="product-name">${escapeHtml(p.nombre)}</td>
-              <td><span class="status ${cls}"><span class="status-dot"></span>${txt}</span></td>
-              <td class="price">${precioTxt}<small>CUP</small></td>
-            </tr>
-          `;
-        });
-      }
+      prods.forEach((p) => {
+        html += `
+          <tr>
+            <td class="product-name">${escapeHtml(p.nombre)}</td>
+            <td><span class="status ok"><span class="status-dot"></span>EXISTE EN TIENDA</span></td>
+            <td class="price">${formatPrice(p.precio)}<small>CUP</small></td>
+          </tr>
+        `;
+      });
 
       html += `</tbody></table></div>`;
     });
 
-    const noteTxt = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t("board.note") : "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad.";
+    if (avail === 0) {
+      html += `<p style="text-align:center;padding:40px;color:var(--text-light)">No hay productos disponibles en esta categoría por el momento.</p>`;
+    }
+
     html += `
       <p class="pizarra-note">
-        ${noteTxt}
+        * Los productos están sujetos a disponibilidad real en tienda.<br>
+        Para actualizar precios o existencia edita el archivo <strong>js/data.js</strong>
       </p>
     `;
 
     main.innerHTML = html;
   }
-
-  // Re-render cuando cambia el idioma
-  window.addEventListener("jl-lang-change", function () {
-    if (typeof INVENTARIO !== "undefined") {
-      renderNav();
-      renderBoard();
-    }
-  });
 
   function init() {
     if (typeof INVENTARIO === "undefined") {

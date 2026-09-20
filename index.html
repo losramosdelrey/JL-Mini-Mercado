@@ -84,13 +84,23 @@
         </a>
         <nav role="navigation" aria-label="Menú principal">
           <ul class="nav-menu" id="navMenu">
-            <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
-            <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
-            <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
-            <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+            <li><a href="#inicio" onclick="closeMenu()" data-i18n="nav.home">Inicio</a></li>
+            <li><a href="catalogo.html" onclick="closeMenu()" data-i18n="nav.catalog">Catálogo</a></li>
+            <li><a href="nosotros.html" onclick="closeMenu()" data-i18n="nav.about">Nosotros</a></li>
+            <li><a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
-        <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+        
+                <div class="lang-switcher" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn active" data-lang="es" title="Español" aria-label="Español" aria-pressed="true">
+            <svg class="flag-svg" viewBox="0 0 21 15" width="22" height="16" aria-hidden="true"><rect width="21" height="15" fill="#c60b1e"/><rect y="3.75" width="21" height="7.5" fill="#ffc400"/></svg>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English" aria-pressed="false">
+            <svg class="flag-svg" viewBox="0 0 60 30" width="22" height="16" aria-hidden="true"><rect width="60" height="30" fill="#00247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#cf142b" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/></svg>
+          </button>
+        </div>
+
+<button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" data-i18n-aria="nav.open" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
           <span></span>
           <span></span>
           <span></span>
@@ -102,22 +112,22 @@
     <main>
     <section id="inicio" class="hero fade-in" aria-label="Presentación principal">
       <div class="container">
-        <h1>
+        <h1 data-i18n="home.hero.title" data-i18n-html>
           "El Precio se olvida, <br /><strong>la Calidad se recuerda</strong>"
         </h1>
-        <p>
+        <p data-i18n="home.hero.subtitle">
           Tu destino de confianza en Pinar del Río. Descubre nuestra selección
           premium de productos para la cocina, el hogar y tu estilo de vida.
         </p>
-        <a href="contacto.html" class="btn btn-primary btn-hero">Visítanos en nuestra Tienda</a>
+        <a href="contacto.html" class="btn btn-primary btn-hero" data-i18n="home.hero.cta">Visítanos en nuestra Tienda</a>
       </div>
     </section>
 
     <!-- PROPUESTA DE VALOR -->
     <section class="value-prop fade-in" aria-labelledby="value-title">
       <div class="container">
-        <p class="value-eyebrow"><strong>¿Por qué elegirnos?</strong></p>
-        <h2 class="section-title">Compromiso con Nuestros Clientes</h2>
+        <p class="value-eyebrow"><strong data-i18n="home.why">¿Por qué elegirnos?</strong></p>
+        <h2 class="section-title" data-i18n="home.commitment">Compromiso con Nuestros Clientes</h2>
         <div class="value-grid">
           <div class="value-card">
             <div class="value-icon">
@@ -127,8 +137,8 @@
                 />
               </svg>
             </div>
-            <h3>Calidad e Innovación</h3>
-            <p>
+            <h3 data-i18n="home.quality.title">Calidad e Innovación</h3>
+            <p data-i18n="home.quality.text">
               Ofrecemos productos de alta calidad que combinan el buen gusto,
               la calidad y todo con un excelente servicio. Nuestro Mini Mercado JL
               trabaja para satisfacer tus necesidades con soluciones confiables,
@@ -142,8 +152,8 @@
                 <path d="M6 3L18 3L22 9L12 21L2 9Z" />
               </svg>
             </div>
-            <h3>El Mercado Líder de Pinar del Río</h3>
-            <p>
+            <h3 data-i18n="home.leader.title">El Mercado Líder de Pinar del Río</h3>
+            <p data-i18n="home.leader.text">
              No somos el mayor, pero sí somos el mejor Mercado para la familia pinareña
               para compras de Alimentos, Aseo Personal y del Hogar, Perfumería y muchísimo más.
             </p>
@@ -155,7 +165,7 @@
     <!-- TESTIMONIOS -->
     <section class="testimonials fade-in">
       <div class="container">
-        <h2 class="section-title" style="text-align: center">
+        <h2 class="section-title" style="text-align: center" data-i18n="home.testimonials">
           Lo Que Dicen Nuestros Clientes
         </h2>
         <div class="testimonials-grid">
@@ -167,7 +177,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
             </div>
-            <p class="testimonial-text">
+            <p class="testimonial-text" data-i18n="home.t1.text">
               "Encontré todo lo que buscaba para prepararle una sabrosa cena a mi hija embarazada. 
                Escribí por WhatsApp, me confirmaron la
               disponibilidad al momento y no perdí tiempo en el viaje hasta
@@ -179,7 +189,7 @@
               </div>
               <div>
                 <div class="testimonial-name">Yaneth Gil Real</div>
-                <div class="testimonial-role">Cliente de satisfecha con nuestros productos congelados</div>
+                <div class="testimonial-role" data-i18n="home.t1.role">Cliente satisfecha con nuestros productos congelados</div>
               </div>
             </div>
           </div>
@@ -191,7 +201,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
             </div>
-            <p class="testimonial-text">
+            <p class="testimonial-text" data-i18n="home.t2.text">
               "Compré unos licores y confituras y el precio realmente valió la
               pena frente a lo que había visto en otros lugares. La calidad
               es la que prometen: se nota que seleccionan muy bien lo que
@@ -203,7 +213,7 @@
               </div>
               <div>
                 <div class="testimonial-name">Dr. Reynaldo Ramos</div>
-                <div class="testimonial-role">Cliente complacido con nuestros precios.</div>
+                <div class="testimonial-role" data-i18n="home.t2.role">Cliente complacido con nuestros precios.</div>
               </div>
             </div>
           </div>
@@ -215,7 +225,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
               <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.56 1.57 6.77L12 16.9l-6.17 3.29 1.57-6.77-5.2-4.56 6.9-.6z"/></svg>
             </div>
-            <p class="testimonial-text">
+            <p class="testimonial-text" data-i18n="home.t3.text">
               "Es mi tienda de confianza para la perfumería y el aseo personal
              y del hogar. La atención es siempre amable y personalizada, y
               siempre queda claro qué hay disponible antes de ir, solo basta con preguntar por WhatsApp."
@@ -226,7 +236,7 @@
               </div>
               <div>
                 <div class="testimonial-name">Odonaimys Cruz Cam</div>
-                <div class="testimonial-role">Cliente de Perfumería</div>
+                <div class="testimonial-role" data-i18n="home.t3.role">Cliente de Perfumería</div>
               </div>
             </div>
           </div>
@@ -237,18 +247,19 @@
     <!-- CATÁLOGO (Teaser) -->
     <section id="categorias" class="categories fade-in">
       <div class="container" style="text-align: center">
-        <h2 class="section-title">Nuestras Divisiones Comerciales</h2>
+        <h2 class="section-title" data-i18n="home.divisions">Nuestras Divisiones Comerciales</h2>
         <p
           style="
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto 30px;
           "
+          data-i18n="home.divisions.text"
         >
           Aseo Personal y del Hogar, Alimentos Variados
           y Perfumería: todo lo que necesitas en un solo lugar.
         </p>
-        <a href="catalogo.html" class="btn btn-primary"
+        <a href="catalogo.html" class="btn btn-primary" data-i18n="home.catalog.cta"
           >Ver Catálogo Completo</a
         >
       </div>
@@ -257,7 +268,7 @@
     <!-- NOSOTROS (Teaser) -->
     <section id="nosotros" class="about fade-in">
       <div class="container" style="text-align: center">
-        <h2 class="section-title">
+        <h2 class="section-title" data-i18n="home.promise">
           Más que una tienda, una promesa de calidad
         </h2>
         <p
@@ -268,11 +279,12 @@
             font-size: 1.2rem;
             font-weight: 700;
           "
+          data-i18n="home.promise.text"
         >
           Conoce la esencia, los valores y el equipo humano detrás de cada
           producto que llega a tus manos en Mini Mercado JL.
         </p>
-        <a href="nosotros.html" class="btn btn-primary"
+        <a href="nosotros.html" class="btn btn-primary" data-i18n="home.history.cta"
           >Conoce Nuestra Historia</a
         >
       </div>
@@ -281,18 +293,19 @@
     <!-- CONTACTO (Teaser) -->
     <section id="contacto" class="contact fade-in">
       <div class="container" style="text-align: center">
-        <h2 class="section-title">Visítanos o Contáctanos</h2>
+        <h2 class="section-title" data-i18n="home.visit">Visítanos o Contáctanos</h2>
         <p
           style="
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto 30px;
           "
+          data-i18n="home.visit.text"
         >
           Calle Martí No. 124, Ciudad Pinar del Río. Escríbenos por
           WhatsApp o consulta todos nuestros datos de contacto.
         </p>
-        <a href="contacto.html" class="btn btn-primary"
+        <a href="contacto.html" class="btn btn-primary" data-i18n="home.contact.cta"
           >Ver Datos de Contacto</a
         >
       </div>
@@ -312,14 +325,14 @@
           />
           <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
         </div>
-        <p class="footer-slogan">
+        <p class="footer-slogan" data-i18n="footer.slogan">
           "El Precio se olvida, la Calidad se recuerda"
         </p>
         <nav class="footer-links" aria-label="Enlaces del pie de página">
-          <a href="#inicio">Inicio</a>
-          <a href="catalogo.html">Catálogo</a>
-          <a href="nosotros.html">Nosotros</a>
-          <a href="contacto.html">Contacto</a>
+          <a href="#inicio" data-i18n="nav.home">Inicio</a>
+          <a href="catalogo.html" data-i18n="nav.catalog">Catálogo</a>
+          <a href="nosotros.html" data-i18n="nav.about">Nosotros</a>
+          <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
         </nav>
         <p class="copyright">
           &copy; 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights
@@ -328,7 +341,8 @@
       </div>
     </footer>
 
-    <!-- JAVASCRIPT (Minimalista y optimizado) -->
+    <!-- JAVASCRIPT -->
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

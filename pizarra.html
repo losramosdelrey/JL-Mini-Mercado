@@ -23,13 +23,24 @@
       </a>
       <nav>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html#inicio" onclick="closeMenu()">Inicio</a></li>
-          <li><a href="catalogo.html" onclick="closeMenu()">Catálogo</a></li>
-          <li><a href="nosotros.html" onclick="closeMenu()">Nosotros</a></li>
-          <li><a href="contacto.html" onclick="closeMenu()">Contacto</a></li>
+          <li><a href="index.html#inicio" onclick="closeMenu()" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="catalogo.html" onclick="closeMenu()" data-i18n="nav.catalog">Catálogo</a></li>
+          <li><a href="nosotros.html" onclick="closeMenu()" data-i18n="nav.about">Nosotros</a></li>
+          <li><a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      
+        
+                <div class="lang-switcher" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn active" data-lang="es" title="Español" aria-label="Español" aria-pressed="true">
+            <svg class="flag-svg" viewBox="0 0 21 15" width="22" height="16" aria-hidden="true"><rect width="21" height="15" fill="#c60b1e"/><rect y="3.75" width="21" height="7.5" fill="#ffc400"/></svg>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" title="English" aria-label="English" aria-pressed="false">
+            <svg class="flag-svg" viewBox="0 0 60 30" width="22" height="16" aria-hidden="true"><rect width="60" height="30" fill="#00247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#cf142b" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/></svg>
+          </button>
+        </div>
+
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -38,9 +49,9 @@
   <!-- BANNER -->
   <section class="hero fade-in" style="padding: 40px 0;">
     <div class="container">
-      <h1 style="font-size: 2rem;">Pizarra <strong>Digital</strong></h1>
-      <p>Consulta disponibilidad y precios de todos nuestros productos.</p>
-      <p style="margin-top: 8px; font-weight: 600;">Horario de atención: todos los días, de 9:00 a. m. a 9:00 p. m.</p>
+      <h1 style="font-size: 2rem;" data-i18n="board.title" data-i18n-html>Pizarra <strong>Digital</strong></h1>
+      <p data-i18n="board.subtitle">Consulta disponibilidad y precios de todos nuestros productos.</p>
+      <p style="margin-top: 8px; font-weight: 600;" data-i18n="board.hours">Horario de atención: todos los días, de 9:00 a. m. a 9:00 p. m.</p>
     </div>
   </section>
 
@@ -69,7 +80,7 @@
              onerror="this.style.display='none'">
         <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
       </div>
-      <p class="footer-slogan">"El Precio se olvida, la Calidad se recuerda"</p>
+      <p class="footer-slogan" data-i18n="footer.slogan">"El Precio se olvida, la Calidad se recuerda"</p>
       <div class="footer-links">
         <a href="index.html#inicio">Inicio</a>
         <a href="catalogo.html">Catálogo</a>
@@ -81,6 +92,7 @@
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/catalogo.js"></script>
   <script src="js/data.js"></script>
   <script src="js/pizarra.js"></script>

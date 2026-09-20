@@ -941,3 +941,76 @@
           grid-template-columns: 1fr;
         }
       }
+
+/* ========== SELECTOR DE IDIOMA ========== */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.lang-btn:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.lang-btn.active {
+  opacity: 1;
+  border-color: var(--primary, #000);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.lang-btn img,
+.lang-btn .flag {
+  width: 22px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  pointer-events: none;
+}
+
+.lang-btn .flag {
+  font-size: 18px;
+  line-height: 1;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .lang-switcher {
+    margin-left: 8px;
+    margin-right: 4px;
+  }
+  .lang-btn {
+    width: 32px;
+    height: 26px;
+  }
+}
+
+
+
+.lang-btn .flag-svg {
+  width: 22px;
+  height: 16px;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  pointer-events: none;
+}
