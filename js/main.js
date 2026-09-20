@@ -1,12 +1,22 @@
 // 1. Control del Menú Móvil
       function toggleMenu() {
         const navMenu = document.getElementById("navMenu");
-        navMenu.classList.toggle("active");
+        const hamburger = document.getElementById("hamburger");
+        const isOpen = navMenu.classList.toggle("active");
+        if (hamburger) {
+          hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          hamburger.setAttribute("aria-label", isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación");
+        }
       }
 
       function closeMenu() {
         const navMenu = document.getElementById("navMenu");
+        const hamburger = document.getElementById("hamburger");
         navMenu.classList.remove("active");
+        if (hamburger) {
+          hamburger.setAttribute("aria-expanded", "false");
+          hamburger.setAttribute("aria-label", "Abrir menú de navegación");
+        }
       }
 
       // 2. Animación de aparición al hacer scroll (Intersection Observer)
