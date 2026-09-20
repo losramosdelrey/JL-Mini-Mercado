@@ -117,8 +117,7 @@
 
     html += `
       <p class="pizarra-note">
-        * Los productos están sujetos a disponibilidad real en tienda.<br>
-        Para actualizar precios o existencia edita el archivo <strong>js/data.js</strong>
+        Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad.
       </p>
     `;
 
