@@ -66,8 +66,8 @@
           ${cat.nombre}
         </h2>
         <div class="pizarra-legend">
-          <span class="legend-ok">● Existe (${avail})</span>
-          <span class="legend-no">● No existe (${total - avail})</span>
+          <span class="legend-ok">● Si Hay (${avail})</span>
+          <span class="legend-no">● Hoy no tenemos (${total - avail})</span>
         </div>
       </div>
     `;
@@ -99,7 +99,7 @@
       } else {
         prods.forEach((p) => {
           const cls = p.disponible ? "ok" : "no";
-          const txt = p.disponible ? "EXISTE EN TIENDA" : "NO EXISTE EN TIENDA";
+          const txt = p.disponible ? "Si hay" : "Hoy no tenemos";
           // Si el producto no está disponible, el precio se muestra siempre como 0,00
           const precioTxt = p.disponible ? formatPrice(p.precio) : "0,00";
           html += `

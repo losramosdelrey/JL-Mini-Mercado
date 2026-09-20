@@ -4,7 +4,7 @@
  * ============================================================
  *  EDITA SOLO ESTE ARCHIVO para cambiar:
  *  - Nombres de productos
- *  - Disponibilidad (true = EXISTE | false = NO EXISTE)
+ *  - Disponibilidad (true = Si hay | false = Hoy no tenemos)
  *  - Precios en CUP
  *
  *  No toques pizarra.html ni pizarra.js
@@ -22,11 +22,11 @@ const INVENTARIO = {
         nombre: "Conservas",
         productos: [
           { nombre: "Atún en aceite 170g", disponible: true, precio: 850 },
-          { nombre: "Sardinas en tomate 125g", disponible: true, precio: 420 },
-          { nombre: "Maíz dulce 300g", disponible: false, precio: 380 },
-          { nombre: "Frijoles negros 400g", disponible: true, precio: 550 },
+        
           { nombre: "Tomate triturado 400g", disponible: false, precio: 490 },
-          { nombre: "Garbanzos 400g", disponible: false, precio: 520 }
+          { nombre: "Manzanas  1u", disponible: false, precio:0.00},
+          { nombre: "Dulce tres Leches", disponible: true, precio:700},
+          { nombre: "Garbanzos 400g", disponible: false, precio: 0.00 }
         ]
       },
       granos: {
@@ -51,11 +51,22 @@ const INVENTARIO = {
       carnicos: {
         nombre: "Cárnicos Frescos",
         productos: [
-          { nombre: "Pollo entero kg", disponible: true, precio: 1200 },
-          { nombre: "Carne de res kg", disponible: false, precio: 1800 },
-          { nombre: "Cerdo pierna kg", disponible: true, precio: 1500 },
-          { nombre: "Jamón cocido 200g", disponible: true, precio: 680 },
-          { nombre: "Salchichas 500g", disponible: true, precio: 750 }
+          { nombre: "Lomo de cerdo 1Lb", disponible: false, precio: 0.00 },
+          { nombre: "Pierna de Cerdo 1Lb", disponible: true, precio: 1950 },
+          { nombre: "Solomillo de Cerdo 1Lb", disponible: true, precio: 2350 },
+          { nombre: "Chuleta de Cerdo 1Lb", disponible: true, precio: 1860 },
+          { nombre: "Lomo ahumado Import 1Lb", disponible: true, precio: 2300 },
+          { nombre: "Pierna ahumada Import 1Lb", disponible: true, precio: 2200 },
+          { nombre: "Pollo MCM Pqt 10 Lbs", disponible: false, precio: 0.00 },
+          { nombre: "Pollo Muslo Pqt 10 Lbs", disponible: false, precio: 0.00 },
+          { nombre: "Pechuga de Pollo  1 Lbs", disponible: false, precio:2650},
+          { nombre: "Hígado de Pollo  1 Lbs", disponible: true, precio:1815},
+          { nombre: "Molleja de Pollo  1 Lbs", disponible: false, precio:0.00},
+          { nombre: "Salchichas  (340g)", disponible: true, precio:1300},
+          { nombre: "Hamburguezas", disponible: false, precio:0.00},
+          { nombre: "Picadillo Cocinero", disponible: true, precio:815},
+          { nombre: "Bacon   (340g)", disponible: true, precio:2860},
+          { nombre: "Pierna de Pavo  1Lb", disponible: true, precio:1600}
         ]
       },
       jugos: {
