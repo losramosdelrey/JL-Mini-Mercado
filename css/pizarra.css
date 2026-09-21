@@ -106,16 +106,6 @@
   display: inline-block;
 }
 
-.pizarra-legend {
-  display: flex;
-  gap: 16px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.legend-ok { color: var(--available); }
-.legend-no { color: var(--unavailable); }
-
 /* ========== BLOQUE DE SUBCATEGORÍA ========== */
 .subcat-block {
   background: var(--card-bg);
@@ -135,21 +125,17 @@
   text-transform: uppercase;
   letter-spacing: 0.03em;
   border-left: 5px solid var(--accent);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.subcat-title .count {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-light);
-  background: rgba(0,0,0,0.06);
-  padding: 3px 10px;
-  border-radius: 20px;
 }
 
 /* Tabla */
+/* Contenedor de seguridad: si algún día la tabla no cupiera, se desplaza
+   en horizontal en lugar de cortar el precio. */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .product-table {
   width: 100%;
   border-collapse: collapse;
@@ -157,8 +143,8 @@
 
 .product-table th {
   text-align: left;
-  padding: 10px 16px;
-  font-size: 0.75rem;
+  padding: 9px 16px;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-light);
@@ -166,9 +152,14 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* Anchos de columna (PC) */
+.product-table .col-name   { width: 52%; }
+.product-table .col-status { width: 28%; }
+.product-table .col-price  { width: 20%; text-align: right; }
+
 .product-table td {
-  padding: 13px 16px;
-  font-size: 1rem;
+  padding: 11px 16px;
+  font-size: 0.9rem;
   border-bottom: 1px solid rgba(215, 218, 220, 0.6);
   vertical-align: middle;
 }
@@ -181,7 +172,8 @@
   background: rgba(0,0,0,0.015);
 }
 
-.product-name {
+.product-table .product-name {
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-dark);
 }
@@ -191,8 +183,8 @@
   align-items: center;
   gap: 7px;
   font-weight: 700;
-  font-size: 0.88rem;
-  padding: 5px 12px;
+  font-size: 0.8rem;
+  padding: 4px 11px;
   border-radius: 6px;
   white-space: nowrap;
 }
@@ -208,8 +200,8 @@
 }
 
 .status-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -217,9 +209,9 @@
 .status.ok .status-dot { background: var(--available); }
 .status.no .status-dot { background: var(--unavailable); }
 
-.price {
+.product-table .price {
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--primary);
   text-align: right;
   white-space: nowrap;
@@ -243,11 +235,50 @@
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 700px) {
-  .product-table th:nth-child(2),
-  .product-table td:nth-child(2) {
-    /* se mantiene visible */
+  /* Un poco más de ancho útil para la tabla */
+  .pizarra-main .container {
+    width: 100%;
+    padding: 0 8px;
   }
-  .price { font-size: 1.05rem; }
-  .status { font-size: 0.8rem; padding: 4px 8px; }
-  .pizarra-title { font-size: 1.35rem; }
+
+  .pizarra-title { font-size: 1.3rem; }
+  .subcat-title { font-size: 0.95rem; padding: 10px 12px; }
+
+  /* Las columnas de estado y precio se ajustan a su contenido;
+     la columna del producto ocupa el resto y salta de línea si hace falta. */
+  .product-table .col-name   { width: auto; }
+  .product-table .col-status { width: 1%; white-space: nowrap; }
+  .product-table .col-price  { width: 1%; white-space: nowrap; }
+
+  .product-table th {
+    padding: 8px 8px;
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+  }
+
+  .product-table td { padding: 9px 8px; }
+
+  .product-table .product-name {
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+
+  .status {
+    font-size: 0.7rem;
+    padding: 3px 7px;
+    gap: 5px;
+  }
+  .status-dot { width: 7px; height: 7px; }
+
+  .product-table .price { font-size: 0.92rem; }
+}
+
+/* Móviles muy estrechos (≤ 380px): el estado puede partirse en dos líneas */
+@media (max-width: 380px) {
+  .status {
+    white-space: normal;
+    line-height: 1.15;
+  }
+  .product-table .product-name { font-size: 0.78rem; }
+  .product-table .price { font-size: 0.86rem; }
 }

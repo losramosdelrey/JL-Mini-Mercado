@@ -51,16 +51,8 @@
       return;
     }
 
-    let total = 0, avail = 0;
-    Object.values(cat.subcategorias).forEach((sub) => {
-      sub.productos.forEach((p) => {
-        total++;
-        if (p.disponible) avail++;
-      });
-    });
-
     const tFn = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t : function (k) {
-      const fallback = { "board.available": "Si Hay", "board.unavailable": "Hoy no tenemos", "board.available.word": "Si hay", "board.unavailable.word": "Hoy no tenemos" };
+      const fallback = { "board.available.word": "Si hay", "board.unavailable.word": "Hoy no tenemos" };
       return fallback[k] || k;
     };
     let html = `
@@ -69,30 +61,25 @@
           <span class="dot" style="background:${cat.color}"></span>
           ${cat.nombre}
         </h2>
-        <div class="pizarra-legend">
-          <span class="legend-ok">● ${tFn("board.available")} (${avail})</span>
-          <span class="legend-no">● ${tFn("board.unavailable")} (${total - avail})</span>
-        </div>
       </div>
     `;
 
     Object.keys(cat.subcategorias).forEach((subKey) => {
       const sub = cat.subcategorias[subKey];
       const prods = sub.productos || [];
-      const availSub = prods.filter((p) => p.disponible).length;
 
       html += `
         <div class="subcat-block">
           <div class="subcat-title">
             ${sub.nombre}
-            <span class="count">${availSub}/${prods.length} disponibles</span>
           </div>
+          <div class="table-scroll">
           <table class="product-table">
             <thead>
               <tr>
-                <th style="width:52%">Producto</th>
-                <th style="width:28%">Disponibilidad</th>
-                <th style="width:20%;text-align:right">Precio</th>
+                <th class="col-name">Producto</th>
+                <th class="col-status">Disponibilidad</th>
+                <th class="col-price">Precio</th>
               </tr>
             </thead>
             <tbody>
@@ -116,7 +103,7 @@
         });
       }
 
-      html += `</tbody></table></div>`;
+      html += `</tbody></table></div></div>`;
     });
 
     const noteTxt = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t("board.note") : "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad.";
