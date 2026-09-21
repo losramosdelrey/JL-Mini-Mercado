@@ -2,19 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   VARIABLES Y RESET (Optimizado para rendimiento)
+   VARIABLES Y RESET
    ========================================= */
 :root {
-  --primary: #000000; /* Negro Profundo: Confianza y profesionalismo */
-  --accent: #8b8b8d; /* Gris Cálido: Calidad y elegancia */
-  --gris-humo: #d7dadc; /* Gris Humo: Separación de secciones (Solicitado) */
-  --bg-light: #f7fafc; /* Fondo claro para contraste */
-  --text-dark: #2d3748; /* Texto principal */
-  --text-light: #718096; /* Texto secundario */
+  --primary: #000000;
+  --accent: #8b8b8d;
+  --gris-humo: #d7dadc;
+  --bg-light: #f7fafc;
+  --text-dark: #2d3748;
+  --text-light: #718096;
   --white: #ffffff;
-  --whatsapp: #25d366; /* Color oficial WhatsApp */
+  --whatsapp: #25d366;
 
-  /* Colores por categoría para el "colorido con propósito" */
+  /* Colores por categoría */
   --cat-aseo: #3182ce;
   --cat-reloj: #d69e2e;
   --cat-calzado: #975a16;
@@ -69,7 +69,6 @@ body {
   transform: translateY(0);
 }
 
-/* Animaciones suaves para el Hero (Inicio) */
 @keyframes heroFadeUp {
   from {
     opacity: 0;
@@ -115,7 +114,6 @@ body {
   cursor: pointer;
 }
 
-/* Botones en secciones claras: fondo negro, texto blanco (alto contraste) */
 .btn-primary {
   background-color: #000000;
   color: #ffffff;
@@ -130,7 +128,6 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* CTA del hero: fondo blanco sobre negro para máximo contraste */
 .btn-hero {
   background-color: #ffffff;
   color: #000000;
@@ -358,7 +355,7 @@ header {
 }
 
 /* =========================================
-   CATEGORÍAS (Estilo Modular Mercado Libre / Falabella)
+   CATEGORÍAS
    ========================================= */
 .categories {
   padding: 60px 0;
@@ -468,54 +465,18 @@ header {
   color: var(--text-light);
 }
 
-/* Colores específicos por tarjeta */
-.cat-aseo {
-  border-top-color: var(--cat-aseo);
-  color: var(--cat-aseo);
-}
-
-.cat-reloj {
-  border-top-color: var(--cat-reloj);
-  color: var(--cat-reloj);
-}
-
-.cat-calzado {
-  border-top-color: var(--cat-calzado);
-  color: var(--cat-calzado);
-}
-
-.cat-alimentos {
-  border-top-color: var(--cat-alimentos);
-  color: var(--cat-alimentos);
-}
-
-.cat-utiles {
-  border-top-color: var(--cat-utiles);
-  color: var(--cat-utiles);
-}
-
-.cat-juguetes {
-  border-top-color: var(--cat-juguetes);
-  color: var(--cat-juguetes);
-}
-
-.cat-perfume {
-  border-top-color: var(--cat-perfume);
-  color: var(--cat-perfume);
-}
-
-.cat-ajuares {
-  border-top-color: var(--cat-ajuares);
-  color: var(--cat-ajuares);
-}
-
-.cat-electro {
-  border-top-color: var(--cat-electro);
-  color: var(--cat-electro);
-}
+.cat-aseo { border-top-color: var(--cat-aseo); color: var(--cat-aseo); }
+.cat-reloj { border-top-color: var(--cat-reloj); color: var(--cat-reloj); }
+.cat-calzado { border-top-color: var(--cat-calzado); color: var(--cat-calzado); }
+.cat-alimentos { border-top-color: var(--cat-alimentos); color: var(--cat-alimentos); }
+.cat-utiles { border-top-color: var(--cat-utiles); color: var(--cat-utiles); }
+.cat-juguetes { border-top-color: var(--cat-juguetes); color: var(--cat-juguetes); }
+.cat-perfume { border-top-color: var(--cat-perfume); color: var(--cat-perfume); }
+.cat-ajuares { border-top-color: var(--cat-ajuares); color: var(--cat-ajuares); }
+.cat-electro { border-top-color: var(--cat-electro); color: var(--cat-electro); }
 
 /* =========================================
-   PROPUESTA DE VALOR / POR QUÉ ELEGIRNOS
+   PROPUESTA DE VALOR
    ========================================= */
 .value-prop {
   padding: 70px 0 60px;
@@ -962,6 +923,46 @@ footer {
 }
 
 /* =========================================
+   BOTONES FLOTANTES DE ACCIÓN DIRECTA
+   ========================================= */
+.floating-actions {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 9999;
+}
+
+.btn-float {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.38);
+}
+
+.btn-float-whatsapp {
+  background-color: #25d366;
+}
+
+.btn-float-call {
+  background-color: #007aff;
+  display: none;
+}
+
+/* =========================================
    RESPONSIVE (Mobile First)
    ========================================= */
 @media (max-width: 768px) {
@@ -987,7 +988,6 @@ footer {
     left: 0;
   }
 
-  /* Logo ajustado en móvil (ni muy grande ni muy pequeño) */
   .logo {
     gap: 8px;
     max-width: calc(100% - 48px);
@@ -1021,14 +1021,20 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  /* Ocultar enlace a Pizarra en el menú y footer en móvil */
+  .btn-float-call {
+    display: flex;
+  }
+
+  .floating-actions {
+    bottom: 18px;
+    right: 18px;
+  }
+
   .nav-menu a[href="pizarra.html"],
   .footer-links a[href="pizarra.html"] {
     display: none !important;
   }
-}
 
-@media (max-width: 768px) {
   .lang-switcher {
     margin-left: 8px;
     margin-right: 4px;
