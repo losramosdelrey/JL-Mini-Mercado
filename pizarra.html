@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Pizarra Digital de Inventario - JL Mini Mercado. Disponibilidad y precios actualizados.">
   <title>Pizarra Digital | JL Mini Mercado</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#18058b">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/catalogo.css">
   <link rel="stylesheet" href="css/pizarra.css">
@@ -116,5 +118,16 @@
   <script src="js/catalogo.js"></script>
   <script src="js/data.js"></script>
   <script src="js/pizarra.js"></script>
+
+  <!-- Registro del Service Worker para la PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registrado', reg))
+          .catch(err => console.error('Error al registrar Service Worker', err));
+      });
+    }
+  </script>
 </body>
 </html>

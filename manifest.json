@@ -1,0 +1,16 @@
+{
+  "short_name": "JL Mercado",
+  "name": "JL Mini Mercado",
+  "icons": [
+    {
+      "src": "images/logos/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#18058b",
+  "display": "standalone",
+  "orientation": "portrait"
+}

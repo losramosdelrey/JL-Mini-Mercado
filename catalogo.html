@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Catálogo completo de JL Mini Mercado: Aseo Personal y del Hogar, Alimentos Variados y Perfumería. Calidad que se recuerda en Pinar del Río.">
     <title>Catálogo | JL Mini Mercado Pinar del Río</title>
+    
+    <!-- PWA & Estilos -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#18058b">
     <link rel="stylesheet" href="css/catalogo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,5 +141,15 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/catalogo.js"></script>
+    <!-- Registro del Service Worker para la PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrado', reg))
+            .catch(err => console.error('Error al registrar Service Worker', err));
+        });
+      }
+    </script>
 </body>
 </html>

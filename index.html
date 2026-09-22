@@ -23,6 +23,9 @@
     <meta name="twitter:title" content="JL Mini Mercado | Calidad que se recuerda" />
     <meta name="twitter:description" content="Productos premium en Pinar del Río. El precio se olvida, la calidad se recuerda." />
 
+    <!-- PWA & Estilos -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#18058b">
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,8 +65,8 @@
           "Saturday",
           "Sunday"
         ],
-        "opens": "09:00",
-        "closes": "21:00"
+        "opens": "08:00",
+        "closes": "19:00"
       },
       "sameAs": []
     }
@@ -332,5 +335,15 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    <!-- Registro del Service Worker para la PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrado', reg))
+            .catch(err => console.error('Error al registrar Service Worker', err));
+        });
+      }
+    </script>
 </body>
 </html>
