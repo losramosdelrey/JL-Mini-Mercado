@@ -57,6 +57,14 @@ const INVENTARIO = {
           { nombre: "Chuleta de Cerdo 1Lb", disponible: true, precio: 1860 },
           { nombre: "Lomo ahumado Import 1Lb", disponible: true, precio: 2300 },
           { nombre: "Pierna ahumada Import 1Lb", disponible: true, precio: 2200 },
+{ nombre: "Alitas de Pollo 1kg", disponible: false, precio: 0.00 },
+{ nombre: "Bistec de Cerdo 4lb", disponible: false, precio: 0.00 },
+{ nombre: "Bolsa de Pollo 2lb", disponible: false, precio: 0.00 },
+{ nombre: "Filete de Pescado  1lb", disponible: false, precio: 0.00 },
+{ nombre: "Hamburguesa de Res 6u", disponible: false, precio: 0.00 },
+{ nombre: "Hamburguesa de Res 90g", disponible: false, precio: 0.00 },
+{ nombre: "Hamburguesas de Res Plena ud de 90g", disponible: false, precio: 0.00 },
+{ nombre: "Lomo de Cerdo en Filete lb", disponible: false, precio: 0.00 },
           { nombre: "Pollo MCM Pqt 10 Lbs", disponible: false, precio: 0.00 },
           { nombre: "Pollo Muslo Pqt 10 Lbs", disponible: false, precio: 0.00 },
           { nombre: "Pechuga de Pollo  1 Lbs", disponible: false, precio:2650},
@@ -165,10 +173,16 @@ const INVENTARIO = {
       rones: {
         nombre: "Línea de Rones",
         productos: [
-          { nombre: "Ron añejo 700ml", disponible: true, precio: 1350 },
-          { nombre: "Ron blanco 700ml", disponible: true, precio: 980 },
-          { nombre: "Ron 7 años 700ml", disponible: true, precio: 1800 },
-          { nombre: "Ron 15 años 700ml", disponible: false, precio: 3200 }
+          { nombre: "Ron Habana Club Añejo Especial 700ml", disponible: true, precio: 4350 },
+          { nombre: "Ron Habana Club Añejo 3 años 700ml", disponible: true, precio: 5980 },
+          { nombre: "Ron Habana Club Añejo Reserva 700ml", disponible: true, precio: 6800 },
+          { nombre: "Ron Habana Club Añejo Especial 1000ml", disponible: false, precio: 6200 },
+          { nombre: "Ron Habana Club Añejo Reserva 1000ml", disponible: false, precio: 7200 },
+          { nombre: "Ron Habana Club Añejo 7 años 700ml", disponible: false, precio: 8200 },
+          { nombre: "Ron Habana Club Selección de Maestros 700ml", disponible: false, precio: 15200 },
+          { nombre: "Ron Habana Club Añejo Blanco 700ml", disponible: false, precio: 3200 },
+          { nombre: "Ron Habana Club Añejo Blanco 1000ml", disponible: false, precio: 4200 },
+          { nombre: "Ron Habana Club Ritual 700ml", disponible: false, precio: 6000 }
         ]
       },
       destilados: {

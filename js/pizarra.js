@@ -8,6 +8,22 @@
   const CAT_ORDER = ["alimentos", "bebidas", "aseo_personal", "aseo_hogar", "fragancias"];
   let currentCat = CAT_ORDER[0];
 
+  function t(key, fallback) {
+    if (window.JL_I18N && typeof window.JL_I18N.t === "function") {
+      const v = window.JL_I18N.t(key);
+      if (v && v !== key) return v;
+    }
+    return fallback || key;
+  }
+
+  function catName(key, fallback) {
+    return t("board.cat." + key, fallback);
+  }
+
+  function subName(key, fallback) {
+    return t("board.sub." + key, fallback);
+  }
+
   function formatPrice(n) {
     return Number(n).toLocaleString("es-CU");
   }
@@ -30,7 +46,7 @@
       btn.type = "button";
       btn.className = "pizarra-btn" + (key === currentCat ? " active" : "");
       btn.dataset.cat = key;
-      btn.textContent = cat.nombre;
+      btn.textContent = catName(key, cat.nombre);
       btn.addEventListener("click", () => {
         currentCat = key;
         history.replaceState(null, "", "#" + key);
@@ -51,15 +67,17 @@
       return;
     }
 
-    const tFn = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t : function (k) {
-      const fallback = { "board.available.word": "Si hay", "board.unavailable.word": "Hoy no tenemos" };
-      return fallback[k] || k;
-    };
+    const labelAvailable = t("board.available.word", "Si hay");
+    const labelUnavailable = t("board.unavailable.word", "Hoy no tenemos");
+    const labelProduct = t("board.product", "Producto");
+    const labelAvailability = t("board.availability", "Disponibilidad");
+    const labelPrice = t("board.price", "Precio");
+
     let html = `
       <div class="pizarra-header">
         <h2 class="pizarra-title">
           <span class="dot" style="background:${cat.color}"></span>
-          ${cat.nombre}
+          ${escapeHtml(catName(currentCat, cat.nombre))}
         </h2>
       </div>
     `;
@@ -71,15 +89,15 @@
       html += `
         <div class="subcat-block">
           <div class="subcat-title">
-            ${sub.nombre}
+            ${escapeHtml(subName(subKey, sub.nombre))}
           </div>
           <div class="table-scroll">
           <table class="product-table">
             <thead>
               <tr>
-                <th class="col-name">Producto</th>
-                <th class="col-status">Disponibilidad</th>
-                <th class="col-price">Precio</th>
+                <th class="col-name">${escapeHtml(labelProduct)}</th>
+                <th class="col-status">${escapeHtml(labelAvailability)}</th>
+                <th class="col-price">${escapeHtml(labelPrice)}</th>
               </tr>
             </thead>
             <tbody>
@@ -90,8 +108,7 @@
       } else {
         prods.forEach((p) => {
           const cls = p.disponible ? "ok" : "no";
-          const txt = p.disponible ? tFn("board.available.word") : tFn("board.unavailable.word");
-          // Si el producto no está disponible, el precio se muestra siempre como 0,00
+          const txt = p.disponible ? labelAvailable : labelUnavailable;
           const precioTxt = p.disponible ? formatPrice(p.precio) : "0,00";
           html += `
             <tr>
@@ -106,10 +123,13 @@
       html += `</tbody></table></div></div>`;
     });
 
-    const noteTxt = (window.JL_I18N && window.JL_I18N.t) ? window.JL_I18N.t("board.note") : "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad.";
+    const noteTxt = t(
+      "board.note",
+      "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad."
+    );
     html += `
       <p class="pizarra-note">
-        ${noteTxt}
+        ${escapeHtml(noteTxt)}
       </p>
     `;
 

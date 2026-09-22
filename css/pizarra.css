@@ -330,3 +330,12 @@
 .hero h1 {
   font-size: 2rem;
 }
+
+.pizarra-note {
+  text-align: center;
+  color: var(--text-light, #718096);
+  font-size: 0.9rem;
+  margin-top: 28px;
+  padding: 0 12px 8px;
+  font-style: italic;
+}
