@@ -1,6 +1,5 @@
 /* ============================================================
    PIZARRA DIGITAL - JL MINI MERCADO
-   Usa las mismas variables de color de tu sitio
    ============================================================ */
 
 :root {
@@ -16,8 +15,8 @@
 
 /* ========== BARRA DE CATEGORÍAS ========== */
 .pizarra-nav {
-  background: var(--white);
-  border-bottom: 3px solid var(--gris-humo);
+  background: var(--white, #ffffff);
+  border-bottom: 3px solid var(--gris-humo, #e2e8f0);
   padding: 14px 0;
   position: sticky;
   top: 70px;
@@ -33,7 +32,6 @@
 }
 
 .pizarra-btn {
-  /* Color propio de cada categoría (se define abajo por data-cat) */
   --btn-color: var(--highlight);
   --btn-text: #fff;
 
@@ -51,21 +49,20 @@
   letter-spacing: 0.03em;
 }
 
-.pizarra-btn[data-cat="alimentos"]     { --btn-color: var(--cat-alimentos); }
-.pizarra-btn[data-cat="bebidas"]       { --btn-color: var(--cat-reloj); --btn-text: #1a202c; }
-.pizarra-btn[data-cat="aseo_personal"] { --btn-color: var(--cat-aseo); }
-.pizarra-btn[data-cat="aseo_hogar"]    { --btn-color: var(--cat-utiles); }
-.pizarra-btn[data-cat="fragancias"]    { --btn-color: var(--cat-perfume); }
+.pizarra-btn[data-cat="alimentos"]     { --btn-color: var(--cat-alimentos, #10b981); }
+.pizarra-btn[data-cat="bebidas"]       { --btn-color: var(--cat-reloj, #d97706); --btn-text: #ffffff; }
+.pizarra-btn[data-cat="aseo_personal"] { --btn-color: var(--cat-aseo, #0284c7); }
+.pizarra-btn[data-cat="aseo_hogar"]    { --btn-color: var(--cat-utiles, #ea580c); }
+.pizarra-btn[data-cat="fragancias"]    { --btn-color: var(--cat-perfume, #8b5cf6); }
 
 .pizarra-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Botón seleccionado: negro, con una barra inferior del color de su categoría */
 .pizarra-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--primary, #1e293b);
+  border-color: var(--primary, #1e293b);
   color: #fff;
   box-shadow: inset 0 -4px 0 var(--btn-color);
 }
@@ -124,12 +121,10 @@
   color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  border-left: 5px solid var(--accent);
+  border-left: 5px solid var(--accent, #3b82f6);
 }
 
-/* Tabla */
-/* Contenedor de seguridad: si algún día la tabla no cupiera, se desplaza
-   en horizontal en lugar de cortar el precio. */
+/* TABLA */
 .table-scroll {
   width: 100%;
   overflow-x: auto;
@@ -147,12 +142,11 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-light);
+  color: var(--text-light, #64748b);
   background: rgba(0,0,0,0.02);
   border-bottom: 1px solid var(--border);
 }
 
-/* Anchos de columna (PC) */
 .product-table .col-name   { width: 52%; }
 .product-table .col-status { width: 28%; }
 .product-table .col-price  { width: 20%; text-align: right; }
@@ -175,7 +169,7 @@
 .product-table .product-name {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--text-dark, #0f172a);
 }
 
 .status {
@@ -212,7 +206,7 @@
 .product-table .price {
   font-weight: 800;
   font-size: 1.05rem;
-  color: var(--primary);
+  color: var(--primary, #0f172a);
   text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -221,21 +215,66 @@
 .price small {
   font-size: 0.7em;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-light, #64748b);
   margin-left: 3px;
 }
 
-/* ========== NOTA AL PIE ========== */
-.pizarra-note {
-  text-align: center;
-  margin-top: 30px;
-  color: var(--text-light);
-  font-size: 0.9rem;
+/* ========== BOTONES FLOTANTES ========== */
+.floating-actions {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 9999;
+}
+
+.btn-float {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.38);
+}
+
+.btn-float:active {
+  transform: scale(0.95);
+}
+
+.btn-float-whatsapp {
+  background-color: #25d366;
+}
+
+.btn-float-call {
+  background-color: #007aff;
+  display: none;
 }
 
 /* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .btn-float-call {
+    display: flex;
+  }
+
+  .floating-actions {
+    bottom: 18px;
+    right: 18px;
+    gap: 12px;
+  }
+}
+
 @media (max-width: 700px) {
-  /* Un poco más de ancho útil para la tabla */
   .pizarra-main .container {
     width: 100%;
     padding: 0 8px;
@@ -244,8 +283,6 @@
   .pizarra-title { font-size: 1.3rem; }
   .subcat-title { font-size: 0.95rem; padding: 10px 12px; }
 
-  /* Las columnas de estado y precio se ajustan a su contenido;
-     la columna del producto ocupa el resto y salta de línea si hace falta. */
   .product-table .col-name   { width: auto; }
   .product-table .col-status { width: 1%; white-space: nowrap; }
   .product-table .col-price  { width: 1%; white-space: nowrap; }
@@ -273,7 +310,6 @@
   .product-table .price { font-size: 0.92rem; }
 }
 
-/* Móviles muy estrechos (≤ 380px): el estado puede partirse en dos líneas */
 @media (max-width: 380px) {
   .status {
     white-space: normal;
