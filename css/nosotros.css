@@ -643,3 +643,13 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
   pointer-events: none;
 }
+/* Patch Fase 2 - nosotros */
+.cta-text {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.footer-slogan {
+  color: #4a4a4a;
+  font-style: italic;
+  font-size: 1.2rem;
+}

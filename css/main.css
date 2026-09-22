@@ -1044,4 +1044,17 @@ footer {
     width: 32px;
     height: 26px;
   }
+}/* Patch Fase 2 - index */
+.text-center {
+  text-align: center;
+}
+.section-lead {
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.section-lead-strong {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  font-weight: 700;
 }

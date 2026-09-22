@@ -1,845 +1,589 @@
-/* Logo tipografía serif clásica */
+/* ==========================================================================
+   Contacto CSS - JL Mini Mercado
+   ========================================================================== */
+
+/* Logo e Integración de Tipografía Serif Clásica */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
 /* =========================================
-           VARIABLES Y RESET (Optimizado para rendimiento)
-           ========================================= */
-        :root {
-            --primary: #000000;       /* Negro: Confianza y profesionalismo */
-            --accent: #8b8b8d;        /* Gris Cálido: Calidad y elegancia */
-            --gris-humo: #d7dadc;     /* Gris Humo: Separación de secciones (Solicitado) */
-            --bg-light: #F7FAFC;      /* Fondo claro para contraste */
-            --text-dark: #2D3748;     /* Texto principal */
-            --text-light: #718096;    /* Texto secundario */
-            --white: #FFFFFF;
-            --whatsapp: #25D366;      /* Color oficial WhatsApp */
-            
-            /* Colores por categoría para el "colorido con propósito" */
-            --cat-aseo: #3182CE;
-            --cat-reloj: #D69E2E;
-            --cat-calzado: #975A16;
-            --cat-alimentos: #38A169;
-            --cat-utiles: #DD6B20;
-            --cat-juguetes: #E53E3E;
-            --cat-perfume: #805AD5;
-            --cat-ajuares: #319795;
-            --cat-electro: #4A5568;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* =========================================
-           UTILIDADES Y ANIMACIONES LIGERAS
-           ========================================= */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Animaciones suaves para el Hero (Inicio) */
-        @keyframes heroFadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes softFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.02); }
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.25; transform: scale(1.05); }
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: all 0.4s ease;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background-color: #8b8b8d;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp);
-            color: var(--white);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-        }
-
-        /* =========================================
-           HEADER Y NAVEGACIÓN
-           ========================================= */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--gris-humo);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            height: 50px;
-        }
-
-        .logo img {
-            height: 48px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Fallback text logo if image fails */
-        .logo-text {
-            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
-            font-size: 1.85rem;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.12em;
-            color: var(--primary);
-        }
-        .logo-text .logo-jl {
-            font-size: 1.15em; font-weight: 700;
-            color: var(--primary);
-        }
-        .logo-text .logo-rest {
-        font-weight: 700;
-        font-size: 1.05em;
-        color: var(--accent);
-        text-transform: lowercase;
-      }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* =========================================
-           HERO SECTION
-           ========================================= */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #000000 100%);
-            color: var(--white);
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            animation: gentlePulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            left: -15%;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(212,175,55,0.10) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            animation: softFloat 10s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 300;
-            font-style: italic;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            animation: heroFadeUp 0.9s ease-out 0.2s both;
-        }
-
-        .hero h1 strong {
-            font-weight: 700;
-            color: var(--accent);
-            font-style: normal;
-            display: inline-block;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .hero h1 strong:hover {
-            transform: scale(1.03);
-            text-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 1;
-            animation: heroFadeUp 0.9s ease-out 0.45s both;
-        }
-
-        .hero .btn {
-            position: relative;
-            z-index: 1;
-            animation: heroFadeUp 0.9s ease-out 0.7s both;
-        }
-
-        /* =========================================
-           CATEGORÍAS (Estilo Modular Mercado Libre / Falabella)
-           ========================================= */
-        .categories {
-            padding: 60px 0;
-            background-color: var(--white);
-            border-bottom: 4px solid var(--gris-humo);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 0 0 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid transparent;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            overflow: hidden;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-        }
-
-        .category-card .cat-image {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .category-card .cat-placeholder {
-            width: 100%;
-            height: 190px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: repeating-linear-gradient(
-                135deg,
-                rgba(0,0,0,0.03),
-                rgba(0,0,0,0.03) 10px,
-                rgba(0,0,0,0.06) 10px,
-                rgba(0,0,0,0.06) 20px
-            );
-            border-bottom: 2px dashed rgba(0,0,0,0.15);
-        }
-
-        .category-card .cat-placeholder svg {
-            width: 42px;
-            height: 42px;
-            fill: currentColor;
-            opacity: 0.6;
-        }
-
-        .category-card .cat-placeholder span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            opacity: 0.8;
-        }
-
-        .category-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            padding: 0 20px;
-            color: var(--primary);
-        }
-
-        .category-card p {
-            font-size: 0.9rem;
-            padding: 0 20px;
-            color: var(--text-light);
-        }
-
-        /* Colores específicos por tarjeta */
-        .cat-aseo { border-top-color: var(--cat-aseo); color: var(--cat-aseo); }
-        .cat-reloj { border-top-color: var(--cat-reloj); color: var(--cat-reloj); }
-        .cat-calzado { border-top-color: var(--cat-calzado); color: var(--cat-calzado); }
-        .cat-alimentos { border-top-color: var(--cat-alimentos); color: var(--cat-alimentos); }
-        .cat-utiles { border-top-color: var(--cat-utiles); color: var(--cat-utiles); }
-        .cat-juguetes { border-top-color: var(--cat-juguetes); color: var(--cat-juguetes); }
-        .cat-perfume { border-top-color: var(--cat-perfume); color: var(--cat-perfume); }
-        .cat-ajuares { border-top-color: var(--cat-ajuares); color: var(--cat-ajuares); }
-        .cat-electro { border-top-color: var(--cat-electro); color: var(--cat-electro); }
-
-        /* =========================================
-           PROPUESTA DE VALOR / POR QUÉ ELEGIRNOS
-           ========================================= */
-       /* =========================================
-   PROPUESTA DE VALOR / POR QUÉ ELEGIRNOS
+   VARIABLES Y RESET (Variables CSS Globales)
    ========================================= */
+:root {
+    --primary: #000000;       /* Negro: Confianza y profesionalismo */
+    --accent: #8b8b8d;        /* Gris Cálido: Calidad y elegancia */
+    --gris-humo: #d7dadc;     /* Gris Humo: Separación de secciones */
+    --bg-light: #F7FAFC;      /* Fondo claro para contraste */
+    --text-dark: #2D3748;     /* Texto principal */
+    --text-light: #718096;    /* Texto secundario */
+    --white: #FFFFFF;
+    --whatsapp: #25D366;      /* Color oficial WhatsApp */
+    
+    /* Colores por categoría (Gama de colores con propósito) */
+    --cat-aseo: #3182CE;
+    --cat-reloj: #D69E2E;
+    --cat-calzado: #975A16;
+    --cat-alimentos: #38A169;
+    --cat-utiles: #DD6B20;
+    --cat-juguetes: #E53E3E;
+    --cat-perfume: #805AD5;
+    --cat-ajuares: #319795;
+    --cat-electro: #4A5568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
 /* =========================================
-   PROPUESTA DE VALOR / POR QUÉ ELEGIRNOS
+   UTILIDADES, BOTONES Y ANIMACIONES
    ========================================= */
-.value-prop {
-    padding: 70px 0 60px;
-    background:
-        linear-gradient(135deg, rgba(26, 54, 93, 0.58) 0%, rgba(26, 54, 93, 0.52) 45%, rgba(44, 82, 130, 0.55) 100%),
-        url('../images/backgrounds/mercado_3.webp') center/cover no-repeat;
-    background-attachment: scroll;
-    border-bottom: 4px solid var(--gris-humo);
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes softFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.02); }
+}
+
+@keyframes gentlePulse {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: all 0.4s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: #8b8b8d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 40px;
     position: relative;
 }
 
-.value-prop .section-title {
-    color: #ffffff;
-    font-size: 2.2rem;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-.value-prop .section-title::after {
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
     background-color: var(--accent);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
-.value-eyebrow {
-    text-align: center;
-    color: #9c9c9c;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
-}
-
-.value-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.value-card {
+/* =========================================
+   HEADER Y NAVEGACIÓN
+   ========================================= */
+header {
     background-color: var(--white);
-    border-radius: 12px;
-    padding: 35px 32px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.20);
-    border-top: 4px solid var(--accent);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--gris-humo);
 }
 
-.value-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.28);
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
 }
 
-.value-card:nth-child(2) {
-    border-top-color: var(--primary);
-}
-
-.value-icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background-color: rgba(212,175,55,0.12);
+.logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    gap: 12px;
+    text-decoration: none;
+    height: 50px;
 }
 
-.value-card:nth-child(2) .value-icon {
-    background-color: rgba(26,54,93,0.08);
+.logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.value-icon svg {
-    width: 26px;
-    height: 26px;
-    fill: var(--accent);
+.logo:hover img {
+    transform: scale(1.05);
 }
 
-.value-card:nth-child(2) .value-icon svg {
-    fill: var(--primary);
-}
-
-.value-card h3 {
+.logo-text {
+    font-family: "Cormorant Garamond", "EB Garamond", Baskerville, Georgia, serif;
+    font-size: 1.85rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.12em;
     color: var(--primary);
-    font-size: 1.25rem;
-    margin-bottom: 12px;
 }
 
-.value-card p {
+.logo-text .logo-jl {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.logo-text .logo-rest {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent);
+    text-transform: lowercase;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
     color: var(--text-dark);
-    font-size: 1rem;
-    line-height: 1.55;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
 }
 
-        /* =========================================
-           SECCIÓN NOSOTROS
-           ========================================= */
-        .about {
-            padding: 60px 0;
-            background-color: var(--bg-light);
-            border-bottom: 4px solid var(--gris-humo);
-            text-align: center;
-        }
+.nav-menu a:hover {
+    color: var(--accent);
+}
 
-        .about p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-
-        /* =========================================
-           CONTACTO Y UBICACIÓN
-           ========================================= */
-        .contact {
-            padding: 60px 0;
-            background-color: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .contact-item svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--accent);
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-
-        .contact-item a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-        .contact-item p {
-            color: var(--text-dark);
-            margin: 0;
-        }
-
-        .map-container {
-            background-color: var(--gris-humo);
-            border-radius: 12px;
-            height: 380px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        .map-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .map-overlay {
-            position: absolute;
-            bottom: 16px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .map-btn {
-            pointer-events: auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-        }
-
-        .map-btn:hover {
-            background-color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-        }
-
-        .map-btn svg {
-            flex-shrink: 0;
-        }
-
-        /* =========================================
-           FOOTER
-           ========================================= */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 40px 0 20px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .footer-logo-text {
-            font-family: "Cormorant Garamond", "EB Garamond", Baskerville, "Libre Baskerville", Georgia, serif;
-            font-size: 1.85rem;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.12em;
-            color: var(--white);
-        }
-        .footer-logo-text .footer-logo-jl {
-            font-size: 1.15em; font-weight: 700;
-            color: var(--white);
-        }
-        .footer-logo-text .footer-logo-rest {
-        font-weight: 700;
-        font-size: 1.05em;
-        color: var(--accent);
-        text-transform: lowercase;
-      }
-
-        .footer-slogan {
-            font-style: italic;
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .copyright {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-
-        /* =========================================
-           RESPONSIVE (Mobile First)
-           ========================================= */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--white);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: left 0.3s ease;
-                border-top: 2px solid var(--gris-humo);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            /* Logo ajustado en móvil (ni muy grande ni muy pequeño) */
-            .logo {
-                gap: 8px;
-                max-width: calc(100% - 48px);
-            }
-            .logo img {
-                height: 40px;
-            }
-            .logo-text {
-                font-size: 1.45rem;
-            }
-            .logo-text .logo-jl {
-                font-size: 1.12em;
-            }
-            .logo-text .logo-rest {
-                font-size: 1em;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-/* ========== SELECTOR DE IDIOMA ========== */
+/* Selector de Idioma */
 .lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 12px;
 }
 
 .lang-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 28px;
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  opacity: 0.7;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.7;
 }
 
 .lang-btn:hover {
-  opacity: 1;
-  transform: scale(1.05);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .lang-btn.active {
-  opacity: 1;
-  border-color: var(--primary, #000);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    opacity: 1;
+    border-color: var(--primary);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
-
-.lang-btn img,
-.lang-btn .flag {
-  width: 22px;
-  height: 16px;
-  object-fit: cover;
-  border-radius: 2px;
-  display: block;
-  pointer-events: none;
-}
-
-.lang-btn .flag {
-  font-size: 18px;
-  line-height: 1;
-  width: auto;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .lang-switcher {
-    margin-left: 8px;
-    margin-right: 4px;
-  }
-  .lang-btn {
-    width: 32px;
-    height: 26px;
-  }
-}
-
-
 
 .lang-btn .flag-svg {
-  width: 22px;
-  height: 16px;
-  display: block;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
-  pointer-events: none;
+    width: 22px;
+    height: 16px;
+    display: block;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    pointer-events: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    background: none;
+    border: none;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* =========================================
+   HERO / PAGE BANNER
+   ========================================= */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #000000 100%);
+    color: var(--white);
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    animation: gentlePulse 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    animation: heroFadeUp 0.9s ease-out 0.2s both;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    animation: heroFadeUp 0.9s ease-out 0.45s both;
+}
+
+/* =========================================
+   LAYOUT EN CUADRÍCULA DE CONTACTO (.contact-grid)
+   ========================================= */
+.contact {
+    padding: 60px 0;
+    background-color: var(--white);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-info h3 {
+    color: var(--primary);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.contact-item svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.contact-item p {
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Mapa Interactivo */
+.map-container {
+    background-color: var(--gris-humo);
+    border-radius: 12px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.map-btn {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.map-btn:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.map-btn svg {
+    flex-shrink: 0;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-logo-text {
+    font-family: "Cormorant Garamond", "EB Garamond", Baskerville, Georgia, serif;
+    font-size: 1.85rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.12em;
+    color: var(--white);
+}
+
+.footer-logo-text .footer-logo-jl {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.footer-logo-text .footer-logo-rest {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent);
+    text-transform: lowercase;
+}
+
+.footer-slogan {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+/* =========================================
+   RESPONSIVE (Mobile First & Adaptive)
+   ========================================= */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: left 0.3s ease;
+        border-top: 2px solid var(--gris-humo);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .logo {
+        gap: 8px;
+        max-width: calc(100% - 48px);
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 1.45rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .map-container {
+        height: 320px;
+    }
+
+    .lang-switcher {
+        margin-left: 8px;
+        margin-right: 4px;
+    }
+
+    .lang-btn {
+        width: 32px;
+        height: 26px;
+    }
+}/* Patch Fase 2 - contacto */
+.contact-label {
+  font-weight: 600;
+  color: var(--primary);
+}
+.contact-wa-wrap {
+  margin-top: 30px;
+}
+.btn-wa-full {
+  width: 100%;
+  justify-content: center;
+}
+.hero h1 {
+  font-size: 2.2rem;
 }

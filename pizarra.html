@@ -15,14 +15,14 @@
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header role="banner">
     <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="images/logos/logo.svg" alt="JL Mini Mercado" height="48"
+      <a href="index.html" class="logo" aria-label="JL Mini Mercado - Ir al inicio">
+        <img src="images/logos/logo.svg" alt="JL Mini Mercado" width="48" height="48"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
         <span class="logo-text"><span class="logo-jl">JL</span><span class="logo-rest"> mini mercado</span></span>
       </a>
-      <nav>
+      <nav role="navigation" aria-label="Menú principal">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html#inicio" onclick="closeMenu()" data-i18n="nav.home">Inicio</a></li>
           <li><a href="catalogo.html" onclick="closeMenu()" data-i18n="nav.catalog">Catálogo</a></li>
@@ -30,7 +30,7 @@
           <li><a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
-      
+
       <div class="lang-switcher" role="group" aria-label="Idioma / Language">
         <button type="button" class="lang-btn active" data-lang="es" title="Español" aria-label="Español" aria-pressed="true">
           <svg class="flag-svg" viewBox="0 0 21 15" width="22" height="16" aria-hidden="true"><rect width="21" height="15" fill="#c60b1e"/><rect y="3.75" width="21" height="7.5" fill="#ffc400"/></svg>
@@ -46,70 +46,68 @@
     </div>
   </header>
 
-  <!-- BANNER -->
-  <section class="hero fade-in" style="padding: 40px 0;">
-    <div class="container">
-      <h1 style="font-size: 2rem;" data-i18n="board.title" data-i18n-html>Pizarra <strong>Digital</strong></h1>
-      <p data-i18n="board.subtitle">Consulta disponibilidad y precios de todos nuestros productos.</p>
-      <p style="margin-top: 8px; font-weight: 600;" data-i18n="board.hours">Horario de atención: todos los días, de 8:00 a. m. a 7:00 p. m.</p>
-    </div>
-  </section>
-
-  <!-- NAVEGACIÓN POR CATEGORÍAS -->
-  <div class="pizarra-nav">
-    <div class="container">
-      <div class="pizarra-nav-inner" id="pizarraNav">
-        <!-- Botones generados dinámicamente por JS -->
+  <main>
+    <!-- BANNER -->
+    <section class="hero fade-in" aria-label="Título de la Pizarra Digital">
+      <div class="container">
+        <h1 data-i18n="board.title" data-i18n-html>Pizarra <strong>Digital</strong></h1>
+        <p data-i18n="board.subtitle">Consulta disponibilidad y precios de todos nuestros productos.</p>
+        <p class="board-hours" data-i18n="board.hours">Horario de atención: todos los días, de 8:00 a. m. a 7:00 p. m.</p>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- CONTENIDO DE LA PIZARRA -->
-  <section class="pizarra-main">
-    <div class="container" id="pizarraContent">
-      <p style="text-align:center;padding:40px;color:var(--text-light)">Cargando pizarra...</p>
-    </div>
-  </section>
+    <!-- NAVEGACIÓN POR CATEGORÍAS -->
+    <nav class="pizarra-nav" aria-label="Categorías de productos">
+      <div class="container">
+        <div class="pizarra-nav-inner" id="pizarraNav">
+          <!-- Botones generados dinámicamente por JS -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO DE LA PIZARRA -->
+    <section class="pizarra-main" aria-label="Inventario y precios">
+      <div class="container" id="pizarraContent">
+        <p class="pizarra-loading">Cargando pizarra...</p>
+      </div>
+    </section>
+  </main>
 
   <!-- BOTONES FLOTANTES PERSISTENTES -->
   <div class="floating-actions">
-    <!-- WhatsApp (Visible en PC y Móvil) -->
-    <a href="https://wa.me/5351870743?text=Hola,%20quisiera%20consultar%20disponibilidad%20de%20productos%20en%20JL%20Mini%20Mercado" 
-       class="btn-float btn-float-whatsapp" 
-       target="_blank" 
-       rel="noopener noreferrer" 
+    <a href="https://wa.me/5351870743?text=Hola,%20quisiera%20consultar%20disponibilidad%20de%20productos%20en%20JL%20Mini%20Mercado"
+       class="btn-float btn-float-whatsapp"
+       target="_blank"
+       rel="noopener noreferrer"
        aria-label="Contactar por WhatsApp">
-      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor">
+      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true">
         <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8c-2 0-3.9-.5-5.6-1.5l-.4-.2-4.2 1.1 1.1-4.1-.3-.5A10.8 10.8 0 1 1 16 25.8z"/>
       </svg>
     </a>
-
-    <!-- Llamada Directa (Visible ÚNICAMENTE en Teléfonos Móviles) -->
-    <a href="tel:+5351870743" 
-       class="btn-float btn-float-call" 
+    <a href="tel:+5351870743"
+       class="btn-float btn-float-call"
        aria-label="Llamar directamente por teléfono">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
         <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>
       </svg>
     </a>
   </div>
 
   <!-- FOOTER -->
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <div class="footer-logo">
-        <img src="images/logos/logo_invertido.svg" alt="JL Mini Mercado" height="48"
-             style="display:inline-block;vertical-align:middle"
+        <img src="images/logos/logo_invertido.svg" alt="JL Mini Mercado" width="48" height="48"
              onerror="this.style.display='none'">
         <span class="footer-logo-text"><span class="footer-logo-jl">JL</span><span class="footer-logo-rest"> mini mercado</span></span>
       </div>
       <p class="footer-slogan" data-i18n="footer.slogan">"El Precio se olvida, la Calidad se recuerda"</p>
-      <div class="footer-links">
-        <a href="index.html#inicio">Inicio</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="contacto.html">Contacto</a>
-      </div>
+      <nav class="footer-links" aria-label="Enlaces del pie de página">
+        <a href="index.html#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="catalogo.html" data-i18n="nav.catalog">Catálogo</a>
+        <a href="nosotros.html" data-i18n="nav.about">Nosotros</a>
+        <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
+      </nav>
       <p class="copyright">&copy; 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.</p>
     </div>
   </footer>
