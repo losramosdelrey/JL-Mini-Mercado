@@ -18,6 +18,17 @@ function closeMenu() {
   }
 }
 document.addEventListener('DOMContentLoaded', function () {
+  const targets = document.querySelectorAll('.fade-in-up');
+
+  // [FIX 7] ANTES: si IntersectionObserver no existía (WebViews/navegadores
+  // antiguos) el constructor lanzaba un error y ningún .fade-in-up recibía la
+  // clase "visible": tarjetas de objetivos (títulos), footer, etc. quedaban con
+  // opacity:0 (invisibles). AHORA: se muestran todos directamente.
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -26,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }, { root: null, rootMargin: '0px', threshold: 0.1 });
-  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  targets.forEach(el => observer.observe(el));
 });
 window.addEventListener('scroll', () => {
   const header = document.getElementById('main-header');

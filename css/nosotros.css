@@ -1,3 +1,19 @@
+/* =========================================================================
+   CORRECCIONES MÓVIL - ÍNDICE DE MODIFICACIONES (buscar "[FIX")
+   [FIX 1] Desbordamiento horizontal (causa raíz del hamburguesa "invisible"):
+           .mv-container usaba minmax(350px,1fr) y en pantallas < 382px las
+           tarjetas Misión/Visión medían 350px, ensanchando la página. El
+           header (position:fixed; width:100%) se calculaba sobre ese ancho
+           mayor y el botón hamburguesa quedaba fuera del borde derecho.
+   [FIX 2] Contención global de overflow-x (html) para que nunca vuelva a
+           ensancharse el viewport en móviles.
+   [FIX 3] Conflicto de media queries / cascada con .hamburger (display).
+   [FIX 4] Blindaje del botón hamburguesa (tamaño, color, z-index, spans).
+   [FIX 5] Títulos finales: tarjetas de objetivos (h3) y enlaces del footer.
+   [FIX 6] Logo del footer sin desbordar en pantallas estrechas.
+   [FIX 7] Animaciones .fade-in-up: nunca dejar contenido oculto.
+   ========================================================================= */
+
 /* =========================================
            VARIABLES Y RESET
            ========================================= */
@@ -13,6 +29,15 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* [FIX 2] overflow-x:hidden solo en <body> no impide que los navegadores
+           móviles amplíen el viewport cuando hay contenido más ancho. Se añade
+           también en <html> (además de corregir la causa en [FIX 1]). */
+        html {
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
         
         body {
             font-family: var(--font-main);
@@ -250,7 +275,11 @@
            ========================================= */
         .mv-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            /* [FIX 1] ANTES: minmax(350px, 1fr) -> en móviles < 382px la columna
+               (350px) era más ancha que el contenedor (ancho - 4rem) y provocaba
+               desbordamiento horizontal. AHORA: el mínimo nunca supera el 100%
+               del contenedor. En escritorio el resultado es idéntico (350px). */
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
             gap: 2rem;
         }
 
@@ -531,7 +560,10 @@
             .sub-gallery { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.5rem; }
 
-            .hamburger { display: flex; }
+            /* [FIX 3] ELIMINADO ".hamburger { display: flex; }" de este bloque:
+               quedaba anulado por el ".hamburger { display: none; }" declarado
+               más abajo (mismo peso, gana el último). La regla móvil definitiva
+               está ahora en el bloque "CORRECCIONES MÓVIL" al final del archivo. */
 
             .nav-links {
                 position: fixed;
@@ -893,5 +925,166 @@
   }
   .footer-nav a {
     font-size: 0.9rem;
+  }
+}
+
+/* =====================================================================
+   CORRECCIONES MÓVIL (añadido al final para que prevalezca en la cascada)
+   ===================================================================== */
+
+/* [FIX 4] Botón hamburguesa: siempre visible y con tamaño estable en móvil.
+   - display:flex !important: mutuamente excluyente con la regla de escritorio
+     (min-width:769px + !important), por lo que ya no depende del orden de las
+     reglas anteriores.
+   - flex:0 0 40px + min-width: el botón no puede encogerse ni ser empujado
+     fuera del header por el logo o el selector de idioma.
+   - Las 3 barras tienen flex:0 0 auto, altura mínima y color oscuro explícito
+     (#1A365D sobre header blanco) para que no se colapsen ni se "pierdan". */
+@media (max-width: 768px) {
+  header {
+    left: 0;
+    right: 0;
+    max-width: 100%;          /* [FIX 1/4] el header nunca excede el ancho visible */
+  }
+
+  .nav-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hamburger {
+    display: flex !important;
+    flex: 0 0 40px;
+    min-width: 40px;
+    min-height: 40px;
+    position: relative;
+    z-index: 1002;            /* por encima del header (1000) y del menú (999) */
+    opacity: 1;
+    visibility: visible;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hamburger span {
+    display: block;
+    flex: 0 0 auto;
+    width: 22px;
+    min-height: 2.5px;
+    height: 2.5px;
+    background-color: #1A365D;
+    opacity: 1;
+  }
+
+  .hamburger:focus-visible {
+    outline: 2px solid #1A365D;
+    outline-offset: 2px;
+  }
+
+  /* [FIX 1] Respaldo para navegadores sin soporte de min() dentro de minmax():
+     una sola columna que puede encogerse (minmax(0,1fr)) en móvil. */
+  .mv-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* [FIX 5] Cuatro títulos de "¿Qué Queremos Lograr?" (h3 de .obj-item) */
+  .objetivos-grid {
+    grid-template-columns: minmax(0, 1fr);   /* ANTES: 1fr (min-content puede desbordar) */
+  }
+
+  .obj-item {
+    min-width: 0;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .obj-item h3 {
+    position: relative;
+    z-index: 1;                    /* siempre por encima del fondo/hover de la tarjeta */
+    color: #ffffff;                /* contraste explícito sobre #474747 / #555555 */
+    -webkit-text-fill-color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    overflow-wrap: break-word;     /* evita que "Innovación Constante" desborde */
+    word-wrap: break-word;
+  }
+
+  /* [FIX 5] Enlaces del footer (Inicio / Catálogo / Nosotros / Contacto) */
+  footer {
+    position: relative;
+    z-index: 1;                    /* nunca queda tapado por capas fijas o transformadas */
+    padding: 3rem 1rem 2rem;       /* ANTES: 4rem 2rem 2rem (menos ancho útil) */
+  }
+
+  .footer-nav {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-nav ul {
+    padding: 0 0.5rem;
+  }
+
+  .footer-nav a {
+    display: inline-block;         /* área táctil correcta y línea base estable */
+    padding: 0.35rem 0.25rem;
+    color: #2D3748;                /* explícito: oscuro sobre footer blanco */
+    -webkit-text-fill-color: #2D3748;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-nav a:hover,
+  .footer-nav a:focus-visible {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+  }
+
+  /* [FIX 6] Logo del footer: 56px de imagen + texto nowrap de 1.85rem podía
+     superar el ancho útil en pantallas de ~360px y ensanchar la página. */
+  .footer-logo {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .footer-logo img {
+    flex-shrink: 0;
+    max-width: 100%;
+  }
+
+  .footer-logo-text {
+    font-size: 1.6rem;
+    max-width: 100%;
+  }
+
+  .footer-copy,
+  .footer-slogan {
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  /* [FIX 1] Tarjetas Misión/Visión: con 3rem de padding lateral quedaban solo
+     ~200px de texto en pantallas de 320–360px. */
+  .mv-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-logo-text {
+    font-size: 1.4rem;
+  }
+}
+
+/* [FIX 7] Si el usuario prefiere menos movimiento, no se depende de la
+   animación (ni del IntersectionObserver) para mostrar el contenido. */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
