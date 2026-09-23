@@ -3,8 +3,8 @@
   "name": "JL Mini Mercado",
   "icons": [
     {
-      "src": "images/logos/logo.svg",
-      "type": "image/svg+xml",
+      "src": "images/logos/logo.png",
+      "type": "image/png",
       "sizes": "192x192 512x512"
     }
   ],

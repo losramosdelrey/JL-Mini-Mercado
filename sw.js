@@ -27,8 +27,8 @@ const PRECACHE_ASSETS = [
   './js/pizarra.js',
   './js/data.js',
   /* Logos */
-  './images/logos/logo.svg',
-  './images/logos/logo_invertido.svg',
+  './images/logos/logo.png',
+  './images/logos/logo_invertido.png',
   /* Categorías del catálogo */
   './images/products/Alimentos.webp',
   './images/products/Bebidas_y_Licores.webp',
