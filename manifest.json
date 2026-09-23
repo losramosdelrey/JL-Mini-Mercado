@@ -16,7 +16,7 @@
       "purpose": "any"
     },
     {
-      "src": "images/logos/icon-512.png",
+      "src": "images/logos/icon-maskable-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
