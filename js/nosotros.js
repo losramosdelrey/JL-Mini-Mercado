@@ -31,32 +31,38 @@
   window.toggleMenu = toggleMenu;
   window.closeMenu = closeMenu;
 
+  function initMenuListeners() {
+    const hamburger = document.getElementById("hamburger");
+    if (hamburger) {
+      hamburger.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleMenu();
+      });
+    }
+    document.querySelectorAll("#navMenu a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
   function initFadeInUp() {
     const targets = document.querySelectorAll(".fade-in-up");
     if (!targets.length) return;
-
-    // Si no hay IntersectionObserver (WebViews antiguos), mostrar todo de una vez
     if (!("IntersectionObserver" in window)) {
-      targets.forEach(function (el) {
-        el.classList.add("visible");
-      });
+      targets.forEach(function (el) { el.classList.add("visible"); });
       return;
     }
-
-    const observer = new IntersectionObserver(
-      function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { root: null, rootMargin: "0px", threshold: 0.1 }
-    );
-    targets.forEach(function (el) {
-      observer.observe(el);
-    });
+    const observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: "0px", threshold: 0.1 });
+    targets.forEach(function (el) { observer.observe(el); });
   }
 
   function initHeaderShadow() {
@@ -69,13 +75,17 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      initFadeInUp();
-      initHeaderShadow();
-    });
-  } else {
+  function onReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+
+  onReady(function () {
+    initMenuListeners();
     initFadeInUp();
     initHeaderShadow();
-  }
+  });
 })();

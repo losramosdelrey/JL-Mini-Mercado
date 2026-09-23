@@ -1,6 +1,6 @@
 /**
  * JL Mini Mercado - Script compartido (menú, animaciones, smooth scroll)
- * Úsalo en index, catálogo, contacto y pizarra.
+ * Usado en index, catálogo, contacto y pizarra.
  * Nosotros tiene extras propios en nosotros.js (mantiene las mismas funciones de menú).
  */
 (function () {
@@ -30,9 +30,29 @@
     }
   }
 
-  // Exponer globalmente para onclick="toggleMenu()" / closeMenu()
+  // Exponer globalmente por compatibilidad residual
   window.toggleMenu = toggleMenu;
   window.closeMenu = closeMenu;
+
+  function initMenuListeners() {
+    const hamburger = document.getElementById("hamburger");
+    if (hamburger) {
+      hamburger.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleMenu();
+      });
+    }
+
+    // Cerrar menú al hacer clic en cualquier enlace del nav
+    document.querySelectorAll("#navMenu a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Cerrar con Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
 
   function initFadeIn(selector) {
     const targets = document.querySelectorAll(selector);
@@ -85,6 +105,7 @@
   }
 
   onReady(function () {
+    initMenuListeners();
     initFadeIn(".fade-in");
     initSmoothScroll();
   });

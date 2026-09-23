@@ -1,16 +1,33 @@
 {
   "short_name": "JL Mercado",
   "name": "JL Mini Mercado",
+  "description": "Mini mercado premium en Pinar del Río. El precio se olvida, la calidad se recuerda.",
   "icons": [
     {
-      "src": "images/logos/logo.png",
+      "src": "images/logos/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192 512x512"
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logos/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logos/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "start_url": "./index.html",
+  "scope": "./",
   "background_color": "#ffffff",
   "theme_color": "#18058b",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "categories": ["shopping", "business"]
 }

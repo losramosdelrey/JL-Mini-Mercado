@@ -6,6 +6,7 @@
   <meta name="description" content="Pizarra Digital de Inventario - JL Mini Mercado. Disponibilidad y precios actualizados.">
   <title>Pizarra Digital | JL Mini Mercado</title>
   <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/logos/favicon.ico" sizes="any">
   <meta name="theme-color" content="#18058b">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/catalogo.css">
@@ -26,10 +27,10 @@
       </a>
       <nav role="navigation" aria-label="Menú principal">
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html#inicio" onclick="closeMenu()" data-i18n="nav.home">Inicio</a></li>
-          <li><a href="catalogo.html" onclick="closeMenu()" data-i18n="nav.catalog">Catálogo</a></li>
-          <li><a href="nosotros.html" onclick="closeMenu()" data-i18n="nav.about">Nosotros</a></li>
-          <li><a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contact">Contacto</a></li>
+          <li><a href="index.html#inicio" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="catalogo.html" data-i18n="nav.catalog">Catálogo</a></li>
+          <li><a href="nosotros.html" data-i18n="nav.about">Nosotros</a></li>
+          <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
 
@@ -42,7 +43,7 @@
         </button>
       </div>
 
-      <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+      <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -114,10 +115,10 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/catalogo.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/pizarra.js"></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/pizarra.js" defer></script>
 
   <!-- Registro del Service Worker para la PWA -->
   <script>

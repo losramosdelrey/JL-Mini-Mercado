@@ -1,10 +1,13 @@
 /**
  * Service Worker - JL Mini Mercado
- * Versión: cache-v4
- * Estrategia: Cache First + Network Fallback
- * Incluye HTML, CSS, JS e imágenes clave para uso offline
+ * Versión: cache-v5
+ * Estrategia:
+ *   - Assets estáticos (CSS, JS excepto data.js, imágenes): Cache First
+ *   - HTML y data.js (contenido que cambia): Network First con fallback a caché
+ *   - Limpieza automática de caches antiguas
  */
-const CACHE_NAME = 'jl-minimercado-cache-v4';
+const CACHE_NAME = 'jl-minimercado-cache-v5';
+const DATA_CACHE = 'jl-minimercado-data-v5';
 
 const PRECACHE_ASSETS = [
   './',
@@ -25,17 +28,19 @@ const PRECACHE_ASSETS = [
   './js/contacto.js',
   './js/nosotros.js',
   './js/pizarra.js',
-  './js/data.js',
-  /* Logos */
+  /* Logos e iconos */
   './images/logos/logo.png',
   './images/logos/logo_invertido.png',
+  './images/logos/icon-192.png',
+  './images/logos/icon-512.png',
+  './images/logos/favicon.ico',
   /* Categorías del catálogo */
   './images/products/Alimentos.webp',
   './images/products/Bebidas_y_Licores.webp',
   './images/products/Aseo_y_Limpieza.webp',
   './images/products/Utiles_del_Hogar.webp',
   './images/products/Perfumeria.webp',
-  /* Fondos usados en home / nosotros */
+  /* Fondos */
   './images/backgrounds/mercado_1.webp',
   './images/backgrounds/mercado_2.webp',
   './images/backgrounds/mercado_3.webp',
@@ -53,7 +58,6 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) =>
       cache.addAll(PRECACHE_ASSETS).catch((err) => {
-        // Si algún asset falla (p. ej. imagen no subida), no bloqueamos la instalación
         console.warn('[SW] Precache parcial:', err);
         return Promise.all(
           PRECACHE_ASSETS.map((url) =>
@@ -71,7 +75,9 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((name) => {
-          if (name !== CACHE_NAME) return caches.delete(name);
+          if (name !== CACHE_NAME && name !== DATA_CACHE) {
+            return caches.delete(name);
+          }
         })
       )
     )
@@ -79,12 +85,52 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+function isHTML(request) {
+  return (
+    request.mode === 'navigate' ||
+    (request.headers.get('accept') || '').includes('text/html')
+  );
+}
+
+function isDataJS(url) {
+  return url.pathname.endsWith('/js/data.js') || url.pathname.endsWith('data.js');
+}
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-
-  // Solo peticiones GET del mismo origen
   if (request.method !== 'GET') return;
 
+  const url = new URL(request.url);
+
+  // Solo mismo origen
+  if (url.origin !== self.location.origin) return;
+
+  // Network First para HTML y data.js (contenido actualizable)
+  if (isHTML(request) || isDataJS(url)) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            const cacheName = isDataJS(url) ? DATA_CACHE : CACHE_NAME;
+            caches.open(cacheName).then((cache) => cache.put(request, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(request).then((cached) => {
+            if (cached) return cached;
+            if (isHTML(request)) {
+              return caches.match('./index.html');
+            }
+            return undefined;
+          });
+        })
+    );
+    return;
+  }
+
+  // Cache First para el resto (CSS, JS estático, imágenes)
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
@@ -101,13 +147,7 @@ self.addEventListener('fetch', (event) => {
           }
           return networkResponse;
         })
-        .catch(() => {
-          // Fallback solo para navegación (páginas HTML)
-          if (request.mode === 'navigate' || request.headers.get('accept')?.includes('text/html')) {
-            return caches.match('./index.html');
-          }
-          return undefined;
-        });
+        .catch(() => undefined);
     })
   );
 });

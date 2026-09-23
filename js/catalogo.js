@@ -1,7 +1,5 @@
 /**
- * Catálogo - reutiliza la lógica compartida de main.js
- * (menú móvil, fade-in, smooth scroll)
- * Se mantiene este archivo por compatibilidad si alguna página lo referencia.
+ * Catálogo - menú, fade-in y smooth scroll
  */
 (function () {
   "use strict";
@@ -33,31 +31,38 @@
   window.toggleMenu = toggleMenu;
   window.closeMenu = closeMenu;
 
+  function initMenuListeners() {
+    const hamburger = document.getElementById("hamburger");
+    if (hamburger) {
+      hamburger.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleMenu();
+      });
+    }
+    document.querySelectorAll("#navMenu a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
   function initFadeIn() {
     const targets = document.querySelectorAll(".fade-in");
     if (!targets.length) return;
-
     if (!("IntersectionObserver" in window)) {
-      targets.forEach(function (el) {
-        el.classList.add("visible");
-      });
+      targets.forEach(function (el) { el.classList.add("visible"); });
       return;
     }
-
-    const observer = new IntersectionObserver(
-      function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { root: null, rootMargin: "0px", threshold: 0.1 }
-    );
-    targets.forEach(function (el) {
-      observer.observe(el);
-    });
+    const observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: "0px", threshold: 0.1 });
+    targets.forEach(function (el) { observer.observe(el); });
   }
 
   function initSmoothScroll() {
@@ -74,13 +79,17 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      initFadeIn();
-      initSmoothScroll();
-    });
-  } else {
+  function onReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+
+  onReady(function () {
+    initMenuListeners();
     initFadeIn();
     initSmoothScroll();
-  }
+  });
 })();

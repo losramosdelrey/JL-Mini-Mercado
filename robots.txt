@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://losramosdelrey.github.io/JL-Mini-Mercado/sitemap.xml
