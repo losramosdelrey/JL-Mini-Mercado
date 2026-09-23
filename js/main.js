@@ -1,57 +1,91 @@
-// 1. Control del Menú Móvil
-      function toggleMenu() {
-        const navMenu = document.getElementById("navMenu");
-        const hamburger = document.getElementById("hamburger");
-        const isOpen = navMenu.classList.toggle("active");
-        if (hamburger) {
-          hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-          hamburger.setAttribute("aria-label", isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación");
-        }
-      }
+/**
+ * JL Mini Mercado - Script compartido (menú, animaciones, smooth scroll)
+ * Úsalo en index, catálogo, contacto y pizarra.
+ * Nosotros tiene extras propios en nosotros.js (mantiene las mismas funciones de menú).
+ */
+(function () {
+  "use strict";
 
-      function closeMenu() {
-        const navMenu = document.getElementById("navMenu");
-        const hamburger = document.getElementById("hamburger");
-        navMenu.classList.remove("active");
-        if (hamburger) {
-          hamburger.setAttribute("aria-expanded", "false");
-          hamburger.setAttribute("aria-label", "Abrir menú de navegación");
-        }
-      }
+  function toggleMenu() {
+    const navMenu = document.getElementById("navMenu");
+    const hamburger = document.getElementById("hamburger");
+    if (!navMenu) return;
+    const isOpen = navMenu.classList.toggle("active");
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      hamburger.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+      );
+    }
+  }
 
-      // 2. Animación de aparición al hacer scroll (Intersection Observer)
-      // Es mucho más ligero que escuchar el evento 'scroll' constantemente
-      document.addEventListener("DOMContentLoaded", function () {
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
+  function closeMenu() {
+    const navMenu = document.getElementById("navMenu");
+    const hamburger = document.getElementById("hamburger");
+    if (navMenu) navMenu.classList.remove("active");
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Abrir menú de navegación");
+    }
+  }
 
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target); // Dejar de observar una vez animado
-            }
-          });
-        }, observerOptions);
+  // Exponer globalmente para onclick="toggleMenu()" / closeMenu()
+  window.toggleMenu = toggleMenu;
+  window.closeMenu = closeMenu;
 
-        const fadeElements = document.querySelectorAll(".fade-in");
-        fadeElements.forEach((el) => observer.observe(el));
+  function initFadeIn(selector) {
+    const targets = document.querySelectorAll(selector);
+    if (!targets.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(function (el) {
+        el.classList.add("visible");
       });
+      return;
+    }
 
-      // 3. Smooth Scroll para navegadores antiguos que no soporten CSS scroll-behavior
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: "smooth",
-            });
+    const observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
           }
         });
+      },
+      { root: null, rootMargin: "0px", threshold: 0.1 }
+    );
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
       });
+    });
+  }
+
+  function onReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+
+  onReady(function () {
+    initFadeIn(".fade-in");
+    initSmoothScroll();
+  });
+})();

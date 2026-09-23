@@ -1,40 +1,85 @@
-// Control del Menú Móvil (con soporte de accesibilidad)
-function toggleMenu() {
-  const navMenu = document.getElementById('navMenu');
-  const hamburger = document.getElementById('hamburger');
-  if (!navMenu) return;
-  const isOpen = navMenu.classList.toggle('active');
-  if (hamburger) {
-    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+/**
+ * Contacto - misma lógica compartida que main.js / catalogo.js
+ * (menú móvil, fade-in, smooth scroll)
+ */
+(function () {
+  "use strict";
+
+  function toggleMenu() {
+    const navMenu = document.getElementById("navMenu");
+    const hamburger = document.getElementById("hamburger");
+    if (!navMenu) return;
+    const isOpen = navMenu.classList.toggle("active");
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      hamburger.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+      );
+    }
   }
-}
-function closeMenu() {
-  const navMenu = document.getElementById('navMenu');
-  const hamburger = document.getElementById('hamburger');
-  if (navMenu) navMenu.classList.remove('active');
-  if (hamburger) {
-    hamburger.setAttribute('aria-expanded', 'false');
-    hamburger.setAttribute('aria-label', 'Abrir menú de navegación');
+
+  function closeMenu() {
+    const navMenu = document.getElementById("navMenu");
+    const hamburger = document.getElementById("hamburger");
+    if (navMenu) navMenu.classList.remove("active");
+    if (hamburger) {
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Abrir menú de navegación");
+    }
   }
-}
-document.addEventListener("DOMContentLoaded", function() {
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
+
+  window.toggleMenu = toggleMenu;
+  window.closeMenu = closeMenu;
+
+  function initFadeIn() {
+    const targets = document.querySelectorAll(".fade-in");
+    if (!targets.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(function (el) {
+        el.classList.add("visible");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, rootMargin: "0px", threshold: 0.1 }
+    );
+    targets.forEach(function (el) {
+      observer.observe(el);
     });
-  }, { root: null, rootMargin: '0px', threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-});
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+  }
+
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      initFadeIn();
+      initSmoothScroll();
+    });
+  } else {
+    initFadeIn();
+    initSmoothScroll();
+  }
+})();
