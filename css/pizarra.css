@@ -272,6 +272,17 @@
     right: 18px;
     gap: 12px;
   }
+
+  .pizarra-nav-inner {
+    gap: 8px;
+  }
+
+  .pizarra-btn {
+    font-size: 0.72rem;
+    padding: 6px 11px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
 }
 
 @media (max-width: 700px) {
