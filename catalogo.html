@@ -24,10 +24,18 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/logos/favicon.ico" sizes="any">
     <meta name="theme-color" content="#18058b">
+
+    <!-- Apple / iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JL Mercado">
+    <link rel="apple-touch-icon" href="images/logos/icon-192.png">
+
     <link rel="stylesheet" href="css/catalogo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/install.css">
 </head>
 <body>
 
@@ -155,6 +163,7 @@
     </footer>
 
     <script src="js/i18n.js" defer></script>
+    <script src="js/install.js" defer></script>
     <script src="js/catalogo.js" defer></script>
     <!-- Registro del Service Worker para la PWA -->
     <script>

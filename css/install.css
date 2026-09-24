@@ -1,0 +1,74 @@
+/* Botón flotante de instalación PWA */
+.pwa-install-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  position: fixed;
+  bottom: 100px;
+  right: 18px;
+  z-index: 9990;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #18058b 0%, #2a0fa8 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(24, 5, 139, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease;
+  opacity: 0;
+  transform: translateY(12px);
+  max-width: calc(100vw - 36px);
+}
+
+.pwa-install-btn.visible {
+  display: inline-flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pwa-install-btn:hover,
+.pwa-install-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(24, 5, 139, 0.5);
+  outline: none;
+}
+
+.pwa-install-btn:active {
+  transform: translateY(0);
+}
+
+.pwa-install-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.pwa-install-btn svg {
+  flex-shrink: 0;
+}
+
+/* Cuando hay botones flotantes de WhatsApp/Llamada, subir un poco más */
+.floating-actions .pwa-install-btn {
+  position: static;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 12px rgba(24, 5, 139, 0.35);
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 480px) {
+  .pwa-install-btn {
+    bottom: 90px;
+    right: 12px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .pwa-install-btn .install-label {
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,16 +1,17 @@
 /**
  * Service Worker - JL Mini Mercado
- * Versión: cache-v6
+ * Versión: cache-v7
  *
  * Estrategias:
  *   - HTML y data.js: Network First con timeout + no-cache (datos frescos)
  *   - CSS y JS estático: Stale-While-Revalidate
  *   - Imágenes y resto: Cache First
+ *   - Fallback offline personalizado
  *   - Limpieza solo de caches propias (prefijo jl-minimercado-)
  */
-const CACHE_STATIC = 'jl-minimercado-static-v6';
-const CACHE_DATA = 'jl-minimercado-data-v6';
-const CACHE_RUNTIME = 'jl-minimercado-runtime-v6';
+const CACHE_STATIC = 'jl-minimercado-static-v7';
+const CACHE_DATA = 'jl-minimercado-data-v7';
+const CACHE_RUNTIME = 'jl-minimercado-runtime-v7';
 
 const PRECACHE_ASSETS = [
   './',
@@ -19,18 +20,21 @@ const PRECACHE_ASSETS = [
   './contacto.html',
   './nosotros.html',
   './pizarra.html',
+  './offline.html',
   './manifest.json',
   './css/main.css',
   './css/catalogo.css',
   './css/contacto.css',
   './css/nosotros.css',
   './css/pizarra.css',
+  './css/install.css',
   './js/i18n.js',
   './js/main.js',
   './js/catalogo.js',
   './js/contacto.js',
   './js/nosotros.js',
   './js/pizarra.js',
+  './js/install.js',
   './images/logos/logo.png',
   './images/logos/logo_invertido.png',
   './images/logos/icon-192.png',
@@ -75,7 +79,6 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((names) =>
       Promise.all(
         names.map((name) => {
-          // Solo eliminar caches propias de este proyecto y versiones antiguas
           if (
             name.startsWith('jl-minimercado-') &&
             name !== CACHE_STATIC &&
@@ -109,10 +112,6 @@ function isStaticAsset(url) {
   );
 }
 
-/**
- * Network First con timeout y cache: 'no-cache'
- * Evita servir datos obsoletos de la HTTP cache del navegador.
- */
 async function networkFirst(request, cacheName, timeoutMs) {
   const cached = await caches.match(request);
   const networkPromise = fetch(request, { cache: 'no-cache' })
@@ -128,9 +127,8 @@ async function networkFirst(request, cacheName, timeoutMs) {
   if (!cached) {
     const res = await networkPromise;
     if (res) return res;
-    // Fallback navegación
     if (isHTML(request)) {
-      return caches.match('./index.html');
+      return (await caches.match('./offline.html')) || (await caches.match('./index.html'));
     }
     return undefined;
   }
@@ -144,9 +142,6 @@ async function networkFirst(request, cacheName, timeoutMs) {
   return cached;
 }
 
-/**
- * Stale-While-Revalidate: sirve caché al instante y actualiza en segundo plano
- */
 async function staleWhileRevalidate(request, cacheName) {
   const cached = await caches.match(request);
   const networkPromise = fetch(request)
@@ -160,7 +155,6 @@ async function staleWhileRevalidate(request, cacheName) {
     .catch(() => null);
 
   if (cached) {
-    // Actualiza en background; no esperamos
     networkPromise.catch(() => {});
     return cached;
   }
@@ -168,9 +162,6 @@ async function staleWhileRevalidate(request, cacheName) {
   return res || undefined;
 }
 
-/**
- * Cache First clásico (imágenes y demás)
- */
 async function cacheFirst(request, cacheName) {
   const cached = await caches.match(request);
   if (cached) return cached;
@@ -197,7 +188,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Solo mismo origen
   if (url.origin !== self.location.origin) return;
 
   if (isHTML(request) || isDataJS(url)) {
@@ -210,6 +200,5 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Imágenes y resto
   event.respondWith(cacheFirst(request, CACHE_RUNTIME));
 });

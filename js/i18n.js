@@ -172,6 +172,10 @@
       "footer.slogan": '"El Precio se olvida, la Calidad se recuerda"',
       "footer.copyright": "© 2026 Sitio web creado por MSc. Reynaldo Ramos Pérez. Todos los derechos reservados. Pinar del Río, Cuba.",
 
+      // Instalación PWA
+      "install.btn": "Instalar aplicación",
+      "install.hint": "Añade JL Mini Mercado a tu pantalla de inicio",
+
       // Selector idioma
       "lang.es": "Español",
       "lang.en": "English"
@@ -332,6 +336,9 @@
 
       "footer.slogan": '"Price is forgotten, Quality is remembered"',
       "footer.copyright": "© 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.",
+
+      "install.btn": "Install app",
+      "install.hint": "Add JL Mini Mercado to your home screen",
 
       "lang.es": "Español",
       "lang.en": "English"

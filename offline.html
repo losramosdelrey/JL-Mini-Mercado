@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#18058b">
+  <title>Sin conexión | JL Mini Mercado</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f8f7fc;
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 28px;
+      max-width: 380px;
+      box-shadow: 0 8px 30px rgba(24, 5, 139, 0.08);
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: #18058b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon svg { width: 32px; height: 32px; fill: #fff; }
+    h1 { font-size: 1.4rem; margin-bottom: 10px; color: #18058b; }
+    p { color: #555; line-height: 1.5; margin-bottom: 24px; font-size: 0.95rem; }
+    button {
+      background: #18058b;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #2a0fa8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7L12 21.5 23.64 7zM3.35 7.75C5.3 6.23 8.47 5 12 5s6.7 1.23 8.65 2.75L12 18.5 3.35 7.75z"/></svg>
+    </div>
+    <h1>Sin conexión</h1>
+    <p>No hay conexión a internet en este momento. Revisa tu red e intenta de nuevo.</p>
+    <button type="button" onclick="location.reload()">Reintentar</button>
+  </div>
+</body>
+</html>
