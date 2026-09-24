@@ -1,7 +1,18 @@
 {
+  "id": "/",
   "short_name": "JL Mercado",
   "name": "JL Mini Mercado",
-  "description": "Mini mercado premium en Pinar del Río. El precio se olvida, la calidad se recuerda.",
+  "description": "Mini mercado premium en Pinar del Río. Alimentos, aseo, bebidas y fragancias. El precio se olvida, la calidad se recuerda.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#18058b",
+  "categories": ["shopping", "business", "food"],
   "icons": [
     {
       "src": "images/logos/icon-192.png",
@@ -22,12 +33,50 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "./index.html",
-  "scope": "./",
-  "background_color": "#ffffff",
-  "theme_color": "#18058b",
-  "display": "standalone",
-  "orientation": "portrait-primary",
-  "lang": "es",
-  "categories": ["shopping", "business"]
+  "screenshots": [
+    {
+      "src": "images/screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Página de inicio de JL Mini Mercado"
+    },
+    {
+      "src": "images/screenshots/catalogo.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Catálogo de productos"
+    },
+    {
+      "src": "images/screenshots/pizarra.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pizarra Digital de precios y disponibilidad"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catálogo",
+      "short_name": "Catálogo",
+      "description": "Ver divisiones comerciales",
+      "url": "./catalogo.html",
+      "icons": [{ "src": "images/logos/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pizarra Digital",
+      "short_name": "Pizarra",
+      "description": "Consultar precios y disponibilidad",
+      "url": "./pizarra.html",
+      "icons": [{ "src": "images/logos/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "description": "Llamar o escribir por WhatsApp",
+      "url": "./contacto.html",
+      "icons": [{ "src": "images/logos/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
 }
