@@ -1,7 +1,7 @@
 /**
- * JL Mini Mercado - Script compartido (menú, animaciones, smooth scroll)
- * Usado en index, catálogo, contacto y pizarra.
- * Nosotros tiene extras propios en nosotros.js (mantiene las mismas funciones de menú).
+ * JL Mini Mercado - Script compartido
+ * Menú hamburguesa, animaciones fade-in / fade-in-up, smooth scroll, sombra del header.
+ * Usado en todas las páginas.
  */
 (function () {
   "use strict";
@@ -30,7 +30,7 @@
     }
   }
 
-  // Exponer globalmente por compatibilidad residual
+  // Compatibilidad residual
   window.toggleMenu = toggleMenu;
   window.closeMenu = closeMenu;
 
@@ -42,13 +42,9 @@
         toggleMenu();
       });
     }
-
-    // Cerrar menú al hacer clic en cualquier enlace del nav
     document.querySelectorAll("#navMenu a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
-
-    // Cerrar con Escape
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
     });
@@ -96,6 +92,19 @@
     });
   }
 
+  function initHeaderShadow() {
+    const header = document.getElementById("main-header") || document.querySelector("header");
+    if (!header) return;
+    window.addEventListener(
+      "scroll",
+      function () {
+        header.style.boxShadow =
+          window.scrollY > 50 ? "0 4px 20px rgba(0,0,0,0.3)" : "none";
+      },
+      { passive: true }
+    );
+  }
+
   function onReady(fn) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", fn);
@@ -107,6 +116,8 @@
   onReady(function () {
     initMenuListeners();
     initFadeIn(".fade-in");
+    initFadeIn(".fade-in-up");
     initSmoothScroll();
+    initHeaderShadow();
   });
 })();

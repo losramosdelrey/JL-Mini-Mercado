@@ -24,8 +24,8 @@
             --text-muted: #94a3b8;
             --accent-gold: #9a9a9a;
             --accent-orange: #9a9a9a;
-            --font-main: 'Montserrat', sans-serif;
-            --font-title: 'Playfair Display', serif;
+            --font-main: 'Cormorant Garamond', 'EB Garamond', Baskerville, Georgia, serif;
+            --font-title: 'Cormorant Garamond', 'EB Garamond', Baskerville, Georgia, serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
