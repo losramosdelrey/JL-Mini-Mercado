@@ -170,7 +170,7 @@
 
       // Footer
       "footer.slogan": '"El Precio se olvida, la Calidad se recuerda"',
-      "footer.rights": "All rights reserved. Pinar del Río, Cuba.",
+      "footer.copyright": "© 2026 Sitio web creado por MSc. Reynaldo Ramos Pérez. Todos los derechos reservados. Pinar del Río, Cuba.",
 
       // Selector idioma
       "lang.es": "Español",
@@ -331,7 +331,7 @@
 
 
       "footer.slogan": '"Price is forgotten, Quality is remembered"',
-      "footer.rights": "All rights reserved. Pinar del Río, Cuba.",
+      "footer.copyright": "© 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.",
 
       "lang.es": "Español",
       "lang.en": "English"
