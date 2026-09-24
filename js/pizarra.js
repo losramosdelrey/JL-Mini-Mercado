@@ -109,7 +109,7 @@
         prods.forEach((p) => {
           const cls = p.disponible ? "ok" : "no";
           const txt = p.disponible ? labelAvailable : labelUnavailable;
-          const precioTxt = p.disponible ? formatPrice(p.precio) : "0,00";
+          const precioTxt = p.disponible ? formatPrice(p.precio) : "—";
           html += `
             <tr>
               <td class="product-name">${escapeHtml(p.nombre)}</td>
