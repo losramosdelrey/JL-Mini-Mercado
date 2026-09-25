@@ -1,6 +1,6 @@
 /**
  * Service Worker - JL Mini Mercado
- * Versión: cache-v7
+ * Versión: cache-v8
  *
  * Estrategias:
  *   - HTML y data.js: Network First con timeout + no-cache (datos frescos)
@@ -8,10 +8,12 @@
  *   - Imágenes y resto: Cache First
  *   - Fallback offline personalizado
  *   - Limpieza solo de caches propias (prefijo jl-minimercado-)
+ *
+ * v8: data.js añadido al precache para Pizarra offline desde la primera instalación.
  */
-const CACHE_STATIC = 'jl-minimercado-static-v7';
-const CACHE_DATA = 'jl-minimercado-data-v7';
-const CACHE_RUNTIME = 'jl-minimercado-runtime-v7';
+const CACHE_STATIC = 'jl-minimercado-static-v8';
+const CACHE_DATA = 'jl-minimercado-data-v8';
+const CACHE_RUNTIME = 'jl-minimercado-runtime-v8';
 
 const PRECACHE_ASSETS = [
   './',
@@ -35,6 +37,7 @@ const PRECACHE_ASSETS = [
   './js/nosotros.js',
   './js/pizarra.js',
   './js/install.js',
+  './js/data.js',
   './images/logos/logo.png',
   './images/logos/logo_invertido.png',
   './images/logos/icon-192.png',
