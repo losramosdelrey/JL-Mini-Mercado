@@ -70,11 +70,18 @@
           }
         });
       },
-      { root: null, rootMargin: "0px", threshold: 0.1 }
+      { root: null, rootMargin: "0px 0px -40px 0px", threshold: 0.05 }
     );
 
     targets.forEach(function (el) {
-      observer.observe(el);
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // Si ya está en pantalla al cargar, revelar ya (evita página “congelada”)
+      if (r.top < vh * 0.95 && r.bottom > 20) {
+        el.classList.add("visible");
+      } else {
+        observer.observe(el);
+      }
     });
   }
 

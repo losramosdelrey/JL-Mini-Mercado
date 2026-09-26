@@ -40,6 +40,8 @@ body {
     Arial, sans-serif;
   color: var(--text-dark);
   background-color: var(--white);
+  background-image: url("../images/backgrounds/textura-iconos.webp");
+  background-repeat: repeat;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -165,6 +167,8 @@ body {
    ========================================= */
 header {
   background-color: var(--white);
+  background-image: url("../images/backgrounds/textura-iconos.webp");
+  background-repeat: repeat;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
@@ -358,6 +362,8 @@ header {
 .categories {
   padding: 60px 0;
   background-color: var(--white);
+  background-image: url("../images/backgrounds/textura-iconos.webp");
+  background-repeat: repeat;
   border-bottom: 4px solid var(--gris-humo);
 }
 
@@ -586,6 +592,8 @@ header {
 .testimonials {
   padding: 70px 0 60px;
   background-color: var(--bg-light);
+  background-image: url("../images/backgrounds/textura-iconos.webp");
+  background-repeat: repeat;
   border-bottom: 4px solid var(--gris-humo);
 }
 
@@ -706,6 +714,8 @@ header {
 .contact {
   padding: 60px 0;
   background-color: var(--white);
+  background-image: url("../images/backgrounds/textura-iconos.webp");
+  background-repeat: repeat;
 }
 
 .contact-grid {
@@ -1056,3 +1066,42 @@ footer {
   font-size: 1.2rem;
   font-weight: 700;
 }
+
+/* =========================================
+   REDES SOCIALES (footer)
+   ========================================= */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 6px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.footer-social-link svg {
+  display: block;
+}
+
