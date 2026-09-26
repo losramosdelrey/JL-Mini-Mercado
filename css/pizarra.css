@@ -389,3 +389,38 @@
   display: block;
 }
 
+/* Iconos SVG categorías y subcategorías */
+.pizarra-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pizarra-btn .pizarra-icon {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+.pizarra-title-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.pizarra-title-icon .pizarra-icon {
+  width: 28px;
+  height: 28px;
+}
+.subcat-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.subcat-title .subcat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent, #3b82f6);
+  flex-shrink: 0;
+}
+.subcat-title .pizarra-icon {
+  width: 18px;
+  height: 18px;
+}
