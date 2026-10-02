@@ -1,0 +1,117 @@
+/* Ventana flotante: pagos desde el exterior (Catálogo y Pizarra) */
+.pay-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.pay-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pay-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 28px 24px 72px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  color: #2d3748;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s ease;
+}
+
+.pay-modal-overlay.visible .pay-modal {
+  transform: translateY(0) scale(1);
+}
+
+.pay-modal-logo {
+  display: block;
+  margin: 0 auto 14px;
+  width: 96px;
+  height: auto;
+}
+
+.pay-modal-text {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.pay-modal-text strong {
+  color: #000;
+}
+
+.pay-modal-help {
+  margin: 0 0 18px;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.pay-modal-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 50px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pay-modal-wa:hover,
+.pay-modal-wa:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(37, 211, 102, 0.5);
+  outline: none;
+}
+
+.pay-modal-exit {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 9px 22px;
+  border: none;
+  border-radius: 50px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pay-modal-exit:hover,
+.pay-modal-exit:focus-visible {
+  background: #333;
+  outline: 2px solid #8b8b8d;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .pay-modal { padding: 22px 18px 68px; }
+  .pay-modal-text { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pay-modal-overlay, .pay-modal { transition: none; }
+}

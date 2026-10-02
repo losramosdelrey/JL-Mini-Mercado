@@ -1,0 +1,7 @@
+/* Pegar o fusionar en main.css, nosotros.css y pizarra.css */
+body {
+    background-color: #ffffff;
+    background-image: url("../images/backgrounds/textura-iconos.webp");
+    background-repeat: repeat;
+    background-size: 1100px auto;
+}

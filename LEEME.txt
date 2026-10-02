@@ -1,0 +1,23 @@
+Textura fija en fondos blancos — JL Mini Mercado
+================================================
+
+PROBLEMA
+Las secciones .categories, .contact, etc. tenían fondo blanco sólido
+y tapaban la textura del body.
+
+SOLUCIÓN
+1) body: textura + background-attachment: fixed (queda fija al hacer scroll)
+2) Secciones blancas: background transparente para que se vea la textura
+3) Tarjetas (cards), header y footer: siguen opacos para legibilidad
+
+ARCHIVOS A SUBIR
+- images/backgrounds/textura-iconos.webp  (obligatorio)
+- css/main.css
+- css/catalogo.css
+- css/contacto.css
+- css/nosotros.css
+- css/pizarra.css
+
+(Opcional si aún no están actualizados: los HTML con Instagram)
+
+Tras subir, recarga forzada (Ctrl+Shift+R) o limpia caché del Service Worker.
