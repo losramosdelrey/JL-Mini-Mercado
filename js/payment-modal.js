@@ -1,6 +1,6 @@
 /**
  * JL Mini Mercado - Ventana flotante de pagos desde el exterior
- * Se muestra en Catálogo y Pizarra. Soporta ES / EN (usa jl-lang).
+ * Se muestra en Pizarra. Soporta ES / EN (usa jl-lang).
  */
 (function () {
   "use strict";
