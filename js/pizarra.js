@@ -177,9 +177,12 @@
       </div>
     `;
 
+    let anyRows = false;
     Object.keys(cat.subcategorias).forEach((subKey) => {
       const sub = cat.subcategorias[subKey];
-      const prods = sub.productos || [];
+      const prods = applySearchFilter(sub.productos || []);
+      if (searchQuery && prods.length === 0) return;
+      anyRows = true;
 
       html += `
         <div class="subcat-block">
@@ -219,9 +222,13 @@
       html += `</tbody></table></div></div>`;
     });
 
+    if (!anyRows && searchQuery) {
+      html += `<p class="pizarra-empty-search">${escapeHtml(t("board.search.empty", "No encontramos productos con ese nombre. Prueba otra búsqueda o escríbenos por WhatsApp."))}</p>`;
+    }
+
     const noteTxt = t(
       "board.note",
-      "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad."
+      "Nuestros productos han sido clasificados e inspeccionados con cuidado para ofrecerte la mejor selección disponible."
     );
     html += `
       <p class="pizarra-note">
@@ -232,28 +239,112 @@
     main.innerHTML = html;
   }
 
+  let searchQuery = "";
+
+  function formatUpdated(iso) {
+    if (!iso) return "";
+    try {
+      const d = new Date(iso + "T12:00:00");
+      if (isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString(document.documentElement.lang === "en" ? "en-US" : "es-CU", {
+        year: "numeric", month: "long", day: "numeric"
+      });
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  function showUpdated() {
+    const el = document.getElementById("pizarraUpdated");
+    if (!el) return;
+    const iso = typeof LAST_UPDATED !== "undefined" ? LAST_UPDATED : "";
+    if (!iso) {
+      el.hidden = true;
+      return;
+    }
+    const label = t("board.updated", "Última actualización");
+    el.textContent = label + ": " + formatUpdated(iso);
+    el.hidden = false;
+  }
+
+  function showError() {
+    const main = document.getElementById("pizarraContent");
+    if (!main) return;
+    const title = t("board.error.title", "No pudimos cargar la pizarra");
+    const msg = t(
+      "board.error.text",
+      "Revisa tu conexión e intenta de nuevo. Mientras tanto, escríbenos por WhatsApp y te confirmamos disponibilidad al momento."
+    );
+    const wa = t("board.error.wa", "Consultar por WhatsApp");
+    const retry = t("board.error.retry", "Reintentar");
+    const updatedIso = typeof LAST_UPDATED !== "undefined" ? LAST_UPDATED : "";
+    const updatedLine = updatedIso
+      ? `<p class="pizarra-error-updated">${escapeHtml(t("board.updated", "Última actualización"))}: ${escapeHtml(formatUpdated(updatedIso))}</p>`
+      : "";
+    main.innerHTML = `
+      <div class="pizarra-error" role="alert">
+        <div class="pizarra-error-icon" aria-hidden="true">📋</div>
+        <h2 class="pizarra-error-title">${escapeHtml(title)}</h2>
+        <p class="pizarra-error-text">${escapeHtml(msg)}</p>
+        ${updatedLine}
+        <div class="pizarra-error-actions">
+          <a class="btn btn-whatsapp" href="https://wa.me/5351870743?text=${encodeURIComponent("Hola JL mini mercado, no pude cargar la pizarra y quiero consultar disponibilidad.")}" target="_blank" rel="noopener noreferrer">${escapeHtml(wa)}</a>
+          <button type="button" class="btn btn-primary" id="pizarraRetry">${escapeHtml(retry)}</button>
+        </div>
+      </div>`;
+    const btn = document.getElementById("pizarraRetry");
+    if (btn) btn.addEventListener("click", function () { window.location.reload(); });
+  }
+
+  function applySearchFilter(prods) {
+    if (!searchQuery) return prods;
+    const q = searchQuery.toLowerCase();
+    return prods.filter(function (p) {
+      return (p.nombre || "").toLowerCase().indexOf(q) !== -1;
+    });
+  }
+
   // Re-render cuando cambia el idioma
   window.addEventListener("jl-lang-change", function () {
     if (typeof INVENTARIO !== "undefined") {
       renderNav();
       renderBoard();
+      showUpdated();
+      const input = document.getElementById("pizarraSearch");
+      if (input) input.placeholder = t("board.search.placeholder", "Buscar producto...");
     }
   });
 
+  function bindSearch() {
+    const input = document.getElementById("pizarraSearch");
+    if (!input) return;
+    input.placeholder = t("board.search.placeholder", "Buscar producto...");
+    let timer = null;
+    input.addEventListener("input", function () {
+      const val = input.value.trim();
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        searchQuery = val;
+        if (typeof INVENTARIO !== "undefined") renderBoard();
+      }, 180);
+    });
+  }
+
   function init() {
+    bindSearch();
     if (typeof INVENTARIO === "undefined") {
-      document.getElementById("pizarraContent").innerHTML =
-        "<p style='text-align:center;padding:40px' data-i18n='board.loading'>Error: no se cargó data.js</p>";
+      showError();
       return;
     }
 
     const hash = (window.location.hash || "").replace("#", "").toLowerCase();
     if (hash && INVENTARIO[hash]) currentCat = hash;
 
+    showUpdated();
     renderNav();
     renderBoard();
 
-    window.addEventListener("hashchange", () => {
+    window.addEventListener("hashchange", function () {
       const h = (window.location.hash || "").replace("#", "").toLowerCase();
       if (h && INVENTARIO[h]) {
         currentCat = h;

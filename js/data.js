@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  DATOS DE LA PIZARRA - JL MINI MERCADO
+ *  DATOS DE LA PIZARRA - JL mini mercado
  * ============================================================
  *  EDITA SOLO ESTE ARCHIVO para cambiar:
  *  - Nombres de productos
@@ -14,6 +14,9 @@
  *  Si no hay existencia, usa disponible: false y precio: 0
  * ============================================================
  */
+
+/** Fecha de última actualización de inventario (mostrar en Pizarra) */
+const LAST_UPDATED = "2026-10-02";
 
 const INVENTARIO = {
 

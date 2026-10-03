@@ -1,5 +1,5 @@
 /**
- * JL Mini Mercado - Sistema de idioma ES / EN
+ * JL mini mercado - Sistema de idioma ES / EN
  * Guarda la preferencia en localStorage
  */
 (function () {
@@ -20,14 +20,18 @@
       "home.hero.title": '"El Precio se olvida, <br /><strong>la Calidad se recuerda</strong>"',
       "home.hero.subtitle": "Tu destino de confianza en Pinar del Río. Descubre nuestra selección premium de productos para la cocina, el hogar y tu estilo de vida.",
       "home.hero.cta": "Visítanos en nuestra Tienda",
+      "home.info.hours": "Horario: todos los días, 8:00 a. m. – 7:00 p. m.",
+      "home.info.whatsapp": "WhatsApp",
+      "home.info.phone": "Llamar",
+      "home.info.address": "Calle Martí No. 124, Pinar del Río",
 
       // Inicio - Propuesta de valor
       "home.why": "¿Por qué elegirnos?",
       "home.commitment": "Compromiso con Nuestros Clientes",
-      "home.quality.title": "Calidad e Innovación",
-      "home.quality.text": "Ofrecemos productos de alta calidad que combinan el buen gusto, la calidad y todo con un excelente servicio. Nuestro Mini Mercado JL trabaja para satisfacer tus necesidades con soluciones confiables, precios competitivos y atención personalizada. Descubre la diferencia de comprar con nosotros.",
-      "home.leader.title": "El Mercado Líder de Pinar del Río",
-      "home.leader.text": "No somos el mayor, pero sí somos el mejor Mercado para la familia pinareña para compras de Alimentos, Aseo Personal y del Hogar, Perfumería y muchísimo más.",
+      "home.quality.title": "Selección cuidada",
+      "home.quality.text": "Elegimos productos con buen gusto y servicio cercano. En JL mini mercado trabajamos para cubrir tus necesidades con precios competitivos y atención personalizada.",
+      "home.leader.title": "Tu mercado de confianza en Pinar del Río",
+      "home.leader.text": "Un lugar pensado para la familia pinareña: alimentos, bebidas y licores, aseo personal y del hogar, fragancias y mucho más, con disponibilidad clara antes de que vengas.",
 
       // Testimonios
       "home.testimonials": "Lo Que Dicen Nuestros Clientes",
@@ -40,11 +44,11 @@
 
       // Divisiones / teaser
       "home.divisions": "Nuestras Divisiones Comerciales",
-      "home.divisions.text": "Aseo Personal y del Hogar, Alimentos Variados y Perfumería: todo lo que necesitas en un solo lugar.",
+      "home.divisions.text": "Alimentos, Bebidas y Licores, Aseo Personal, Aseo del Hogar y Fragancias: todo lo que necesitas en un solo lugar.",
       "home.catalog.cta": "Ver Catálogo Completo",
       "home.board.cta": "Ver precios y disponibilidad",
       "home.promise": "Más que una tienda, una promesa de calidad",
-      "home.promise.text": "Conoce la esencia, los valores y el equipo humano detrás de cada producto que llega a tus manos en Mini Mercado JL.",
+      "home.promise.text": "Conoce la esencia, los valores y el equipo humano detrás de cada producto que llega a tus manos en JL mini mercado.",
       "home.history.cta": "Conoce Nuestra Historia",
       "home.visit": "Visítanos o Contáctanos",
       "home.visit.text": "Calle Martí No. 124, Ciudad Pinar del Río. Escríbenos por WhatsApp o consulta todos nuestros datos de contacto.",
@@ -70,22 +74,22 @@
 
       // Contacto
       "contact.title": "Contáctanos",
-      "contact.subtitle": "Estamos para servirte. Escríbenos, llámanos o visítanos en nuestro Mini Mercado.",
+      "contact.subtitle": "Estamos para servirte. Escríbenos, llámanos o visítanos en JL mini mercado.",
       "contact.section": "Visítanos o Contáctanos",
       "contact.serve": "Estamos para servirte",
       "contact.address": "Dirección Física",
       "contact.hours": "Horario de Atención",
       "contact.hours.value": "<strong>Todos los días,<br>de 8:00 a. m. a 7:00 p. m.</strong>",
-      "contact.phones": "Teléfonos Móviles",
+      "contact.phones": "Teléfono móvil",
       "contact.emails": "Correos Electrónicos",
       "contact.wa.cta": "Escríbenos por WhatsApp — Respondemos al momento",
       "contact.map": "Abrir en Google Maps",
 
       // Nosotros
       "about.hero.title": "Más que una tienda,<br>una promesa de calidad",
-      "about.hero.subtitle": "Conoce la esencia, los valores y el equipo humano detrás de cada producto que llega a tus manos desde JL Mini Mercado en Pinar del Río.",
+      "about.hero.subtitle": "Conoce la esencia, los valores y el equipo humano detrás de cada producto que llega a tus manos desde JL mini mercado en Pinar del Río.",
       "about.history": "Nuestra Historia",
-      "about.history.p1": "JL Mini Mercado nació con una convicción simple pero poderosa: los pinareños merecen acceder a productos de calidad mundial sin salir de su ciudad. Desde nuestros primeros pasos en la Calle Martí No. 124, hemos evolucionado de un pequeño local a un referente comercial diversificado.",
+      "about.history.p1": "JL mini mercado nació con una convicción simple pero poderosa: los pinareños merecen acceder a productos bien seleccionados sin salir de su ciudad. Desde nuestros primeros pasos en la Calle Martí No. 124, hemos evolucionado de un pequeño local a un referente comercial diversificado.",
       "about.history.p2": "No solo vendemos productos; también curamos experiencias. Cada división, desde nuestra variedad de alimentos hasta el aseo personal y del hogar y la perfumería, han sido construida sobre la base de la confianza y el servicio personalizado.",
       "about.quote": '"Crecimos escuchando a nuestra comunidad, adaptándonos a sus sueños y necesidades."',
       "about.essence": "Nuestra <span>Esencia</span>",
@@ -118,8 +122,16 @@
       "board.product": "Producto",
       "board.availability": "Disponibilidad",
       "board.price": "Precio",
-      "board.note": "Nuestros productos han sido clasificados e inspeccionados por un comité profesional de la calidad.",
+      "board.note": "Nuestros productos han sido clasificados e inspeccionados con cuidado para ofrecerte la mejor selección disponible.",
       "board.loading": "Cargando pizarra...",
+      "board.updated": "Última actualización",
+      "board.search.label": "Buscar producto",
+      "board.search.placeholder": "Buscar producto...",
+      "board.search.empty": "No encontramos productos con ese nombre. Prueba otra búsqueda o escríbenos por WhatsApp.",
+      "board.error.title": "No pudimos cargar la pizarra",
+      "board.error.text": "Revisa tu conexión e intenta de nuevo. Mientras tanto, escríbenos por WhatsApp y te confirmamos disponibilidad al momento.",
+      "board.error.wa": "Consultar por WhatsApp",
+      "board.error.retry": "Reintentar",
       "board.available.word": "Si hay",
       "board.unavailable.word": "Hoy no tenemos",
       "board.available.count": "disponibles",
@@ -175,7 +187,7 @@
 
       // Instalación PWA
       "install.btn": "Instalar aplicación",
-      "install.hint": "Añade JL Mini Mercado a tu pantalla de inicio",
+      "install.hint": "Añade JL mini mercado a tu pantalla de inicio",
 
       // Selector idioma
       "lang.es": "Español",
@@ -194,13 +206,17 @@
       "home.hero.title": '"Price is forgotten, <br /><strong>Quality is remembered</strong>"',
       "home.hero.subtitle": "Your trusted destination in Pinar del Río. Discover our premium selection of products for the kitchen, the home and your lifestyle.",
       "home.hero.cta": "Visit Us at Our Store",
+      "home.info.hours": "Hours: every day, 8:00 a.m. – 7:00 p.m.",
+      "home.info.whatsapp": "WhatsApp",
+      "home.info.phone": "Call",
+      "home.info.address": "Calle Martí No. 124, Pinar del Río",
 
       "home.why": "Why choose us?",
       "home.commitment": "Commitment to Our Customers",
-      "home.quality.title": "Quality and Innovation",
-      "home.quality.text": "We offer high-quality products that combine good taste, quality and excellent service. JL Mini Mercado works to meet your needs with reliable solutions, competitive prices and personalized attention. Discover the difference of shopping with us.",
-      "home.leader.title": "The Leading Market of Pinar del Río",
-      "home.leader.text": "We are not the largest, but we are the best Market for the Pinar del Río family for Food, Personal and Home Care, Perfumes and much more.",
+      "home.quality.title": "Careful selection",
+      "home.quality.text": "We choose products with good taste and close service. At JL mini mercado we work to meet your needs with competitive prices and personalized attention.",
+      "home.leader.title": "Your trusted market in Pinar del Río",
+      "home.leader.text": "A place for families in Pinar del Río: food, drinks and spirits, personal care, home care, fragrances and more — with clear availability before you visit.",
 
       "home.testimonials": "What Our Customers Say",
       "home.t1.text": "\"I found everything I needed to prepare a delicious dinner for my pregnant daughter. I wrote on WhatsApp, they confirmed availability right away and I didn't waste time going to the store.\"",
@@ -211,11 +227,11 @@
       "home.t3.role": "Perfume customer",
 
       "home.divisions": "Our Commercial Divisions",
-      "home.divisions.text": "Personal and Home Care, Varied Foods and Perfumes: everything you need in one place.",
+      "home.divisions.text": "Food, Drinks & Spirits, Personal Care, Home Care and Fragrances: everything you need in one place.",
       "home.catalog.cta": "View Full Catalog",
       "home.board.cta": "View prices and availability",
       "home.promise": "More than a store, a promise of quality",
-      "home.promise.text": "Discover the essence, values and the people behind every product that reaches your hands at JL Mini Mercado.",
+      "home.promise.text": "Discover the essence, values and the people behind every product that reaches your hands at JL mini mercado.",
       "home.history.cta": "Our Story",
       "home.visit": "Visit or Contact Us",
       "home.visit.text": "Calle Martí No. 124, Pinar del Río City. Write to us on WhatsApp or check all our contact details.",
@@ -245,15 +261,15 @@
       "contact.address": "Physical Address",
       "contact.hours": "Opening Hours",
       "contact.hours.value": "<strong>Every day,<br>from 8:00 a.m. to 7:00 p.m.</strong>",
-      "contact.phones": "Mobile Phones",
+      "contact.phones": "Mobile phone",
       "contact.emails": "Email Addresses",
       "contact.wa.cta": "Message us on WhatsApp — We reply promptly",
       "contact.map": "Open in Google Maps",
 
       "about.hero.title": "More than a store,<br>a promise of quality",
-      "about.hero.subtitle": "Discover the essence, values and the people behind every product that reaches your hands from JL Mini Mercado in Pinar del Río.",
+      "about.hero.subtitle": "Discover the essence, values and the people behind every product that reaches your hands from JL mini mercado in Pinar del Río.",
       "about.history": "Our Story",
-      "about.history.p1": "JL Mini Mercado was born with a simple but powerful conviction: the people of Pinar del Río deserve access to world-class products without leaving their city. From our first steps at Calle Martí No. 124, we have grown from a small shop into a diversified commercial reference.",
+      "about.history.p1": "JL mini mercado was born with a simple but powerful conviction: the people of Pinar del Río deserve access to carefully selected products without leaving their city. From our first steps at Calle Martí No. 124, we have grown from a small shop into a diversified commercial reference.",
       "about.history.p2": "We do not just sell products; we also curate experiences. Every division, from our variety of foods to personal and home care and perfumes, has been built on trust and personalized service.",
       "about.quote": '"We grew by listening to our community, adapting to their dreams and needs."',
       "about.essence": "Our <span>Essence</span>",
@@ -285,8 +301,16 @@
       "board.product": "Product",
       "board.availability": "Availability",
       "board.price": "Price",
-      "board.note": "Our products have been classified and inspected by a professional quality committee.",
+      "board.note": "Our products have been carefully classified and inspected to offer you the best available selection.",
       "board.loading": "Loading board...",
+      "board.updated": "Last updated",
+      "board.search.label": "Search product",
+      "board.search.placeholder": "Search product...",
+      "board.search.empty": "No products match that name. Try another search or message us on WhatsApp.",
+      "board.error.title": "We could not load the board",
+      "board.error.text": "Check your connection and try again. In the meantime, message us on WhatsApp and we will confirm availability right away.",
+      "board.error.wa": "Message on WhatsApp",
+      "board.error.retry": "Retry",
       "board.available.word": "In stock",
       "board.unavailable.word": "Out of stock",
       "board.available.count": "available",
@@ -340,7 +364,7 @@
       "footer.copyright": "© 2026 Website created by MSc. Reynaldo Ramos Pérez. All rights reserved. Pinar del Río, Cuba.",
 
       "install.btn": "Install app",
-      "install.hint": "Add JL Mini Mercado to your home screen",
+      "install.hint": "Add JL mini mercado to your home screen",
 
       "lang.es": "Español",
       "lang.en": "English"

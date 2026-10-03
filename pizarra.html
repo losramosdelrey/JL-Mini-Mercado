@@ -84,6 +84,17 @@
       </div>
     </section>
 
+    <!-- BÚSQUEDA + META -->
+    <div class="pizarra-toolbar">
+      <div class="container pizarra-toolbar-inner">
+        <label class="pizarra-search-label" for="pizarraSearch">
+          <span class="visually-hidden" data-i18n="board.search.label">Buscar producto</span>
+          <input type="search" id="pizarraSearch" class="pizarra-search" data-i18n-placeholder="board.search.placeholder" placeholder="Buscar producto..." autocomplete="off" enterkeyhint="search">
+        </label>
+        <p class="pizarra-updated" id="pizarraUpdated" hidden></p>
+      </div>
+    </div>
+
     <!-- NAVEGACIÓN POR CATEGORÍAS -->
     <nav class="pizarra-nav" aria-label="Categorías de productos">
       <div class="container">
@@ -96,14 +107,16 @@
     <!-- CONTENIDO DE LA PIZARRA -->
     <section class="pizarra-main" aria-label="Inventario y precios">
       <div class="container" id="pizarraContent">
-        <p class="pizarra-loading">Cargando pizarra...</p>
+        <div class="pizarra-loading" role="status" aria-live="polite">
+          <p data-i18n="board.loading">Cargando pizarra...</p>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- BOTONES FLOTANTES PERSISTENTES -->
   <div class="floating-actions">
-    <a href="https://wa.me/5351870743?text=Hola,%20quisiera%20consultar%20disponibilidad%20de%20productos%20en%20JL%20Mini%20Mercado"
+    <a href="https://wa.me/5351870743?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20de%20productos%20en%20JL%20mini%20mercado"
        class="btn-float btn-float-whatsapp"
        target="_blank"
        rel="noopener noreferrer"
